@@ -432,6 +432,7 @@
     <position class="g1" name="right_wrist_pitch_joint" joint="right_wrist_pitch_joint" kp="16.778" kv="1.068"/>
     <position class="g1" name="right_wrist_yaw_joint" joint="right_wrist_yaw_joint" kp="16.778" kv="1.068"/>
 
+    <!-- Inspire hand actuators (position control) -->
     <position name="left_hand_thumb_0_joint" joint="left_hand_thumb_0_joint" kp="2.0" kv="0.1"/>
     <position name="left_hand_thumb_1_joint" joint="left_hand_thumb_1_joint" kp="1.5" kv="0.1"/>
     <position name="left_hand_thumb_2_joint" joint="left_hand_thumb_2_joint" kp="1.5" kv="0.1"/>

@@ -1,16 +1,16 @@
 """Simulation layer for the IK pipeline: scene, runner, arm IK and the walk.
 
-- walk: P-controller over the walker's velocity commands with a 0.30 m/s
-  floor (the gait deadbands smaller commands: it steps in place), break on
-  arrival; yaw is used for aiming (accurate), strafe is not.
-- arm: discrete kinematic 6-DoF DLS IK (mj_jacSite; mj_comPos is REQUIRED on
-  scratch data or the Jacobian is silently zero) + aim-and-correct rounds,
-  with gravity sag cancelled in closed form by adding qfrc_bias/kp to the
-  arm's POSITION SETPOINT. No qfrc_applied wrench: every term is computable
-  on a real robot (qfrc_bias from inverse dynamics on the encoders, kp from
-  the controller config).
-- `Runner` steps the physics at 200 Hz, the policies at 50 Hz, and records
-  the telemetry, video and snapshots the pipeline reports.
+  - walk: P-controller over the walker's velocity commands with a 0.30 m/s
+    floor (the gait deadbands smaller commands: it steps in place), break on
+    arrival; yaw is used for aiming (accurate), strafe is not.
+  - arm: discrete kinematic 6-DoF DLS IK (mj_jacSite; mj_comPos is REQUIRED on
+    scratch data or the Jacobian is silently zero) + aim-and-correct rounds,
+    with gravity sag cancelled in closed form by adding qfrc_bias/kp to the
+    arm's POSITION SETPOINT. No qfrc_applied wrench: every term is computable
+    on a real robot (qfrc_bias from inverse dynamics on the encoders, kp from
+    the controller config).
+  - `Runner` steps the physics at 200 Hz, the policies at 50 Hz, and records
+    the telemetry, video and snapshots the pipeline reports.
 """
 
 import json
@@ -74,18 +74,18 @@ SYNC_RAMP = True
 # geometry. Set this back to ("pick_raise", "pick_approach") to recover the
 # M1.6 shape for an ablation.
 CART_SKIP_TAGS = ()
-CART_STEP_M = 0.035  # one waypoint per ~3.5 cm of palm travel
-CART_STEP_DEG = 20.0  # ... or per 20 deg of palm rotation
-CART_MAX_WP = 10  # waypoints are not free: each is an IK solve + a ramp
-CART_SEED_ITERS = 120  # DLS iterations for a waypoint seeded from its
-# predecessor (the endpoint still gets the full 300)
+CART_STEP_M = 0.035     # one waypoint per ~3.5 cm of palm travel
+CART_STEP_DEG = 20.0    # ... or per 20 deg of palm rotation
+CART_MAX_WP = 10        # waypoints are not free: each is an IK solve + a ramp
+CART_SEED_ITERS = 120   # DLS iterations for a waypoint seeded from its
+                        # predecessor (the endpoint still gets the full 300)
 # A straight palm line is NOT always available. When an interior waypoint has no
 # IK solution, or when consecutive solutions sit on different IK branches, the
 # straight line is not a path the arm can fly and forcing it is worse than the
 # arc: the plan is rejected and the move falls back to the single endpoint solve
 # (with the synchronized ramp). Both thresholds are measured, see the M1.6 notes.
-CART_WP_TOL = 0.015  # max interior-waypoint IK residual, m
-CART_JUMP_RAD = 0.45  # max joint step between consecutive solutions
+CART_WP_TOL = 0.015    # max interior-waypoint IK residual, m
+CART_JUMP_RAD = 0.45   # max joint step between consecutive solutions
 # --- M1.11: how the ramp STOPS -------------------------------------------- #
 # `ramp_to` marches `q_cmd` at a constant `rate` and then stops in one control
 # step, so the commanded joint velocity steps from `rate` to 0. The arm is
@@ -103,7 +103,7 @@ CART_JUMP_RAD = 0.45  # max joint step between consecutive solutions
 RAMP_TAPER = 0.0
 RAMP_TAPER_IN = 0.0
 RAMP_TAPER_FLOOR = 0.1  # never below this fraction of `rate` -- the ramp has to
-# terminate, and the final snap is at most rate*floor
+                        # terminate, and the final snap is at most rate*floor
 # --- M1.11: the grip is a VICE on a feather -------------------------------- #
 # The cylinder weighs 8.9 g (0.087 N). At full closure the finger position
 # actuators sit 130 mrad (middle_0) and 62 mrad (middle_1) short of their
@@ -144,22 +144,18 @@ def rot_from_vec(w):
   return np.eye(3) + np.sin(th) * K + (1 - np.cos(th)) * K @ K
 
 
-def cartesian_waypoints(
-  p0, R0, p1, R1, n=None, step_m=None, step_deg=None, max_wp=None
-):
+def cartesian_waypoints(p0, R0, p1, R1, n=None, step_m=None, step_deg=None,
+                        max_wp=None):
   """Palm poses along the straight line p0 -> p1 with rotation-vector
   (slerp-equivalent) orientation interpolation. Excludes the start, includes
   the exact endpoint. `n=None` picks the count from the travel distance."""
-  p0 = np.asarray(p0, float)
-  p1 = np.asarray(p1, float)
+  p0 = np.asarray(p0, float); p1 = np.asarray(p1, float)
   w = rotvec_between(R0, R1)
   ang = float(np.linalg.norm(w))
   if n is None:
-    n = max(
-      int(np.ceil(np.linalg.norm(p1 - p0) / (step_m or CART_STEP_M))),
-      int(np.ceil(np.degrees(ang) / (step_deg or CART_STEP_DEG))),
-      1,
-    )
+    n = max(int(np.ceil(np.linalg.norm(p1 - p0)
+                        / (step_m or CART_STEP_M))),
+            int(np.ceil(np.degrees(ang) / (step_deg or CART_STEP_DEG))), 1)
     n = min(n, max_wp or CART_MAX_WP)
   out = []
   for k in range(1, n + 1):
@@ -179,8 +175,7 @@ def seg_dev_z(trace, a, b):
   if not len(trace):
     return 0.0, 0.0
   P = np.asarray(trace, float)
-  a = np.asarray(a, float)
-  b = np.asarray(b, float)
+  a = np.asarray(a, float); b = np.asarray(b, float)
   d = b - a
   L2 = float(d @ d)
   t = np.zeros(len(P)) if L2 < 1e-12 else np.clip(((P - a) @ d) / L2, 0.0, 1.0)
@@ -198,8 +193,7 @@ def seg_dev(trace, a, b):
   if not len(trace):
     return 0.0
   P = np.asarray(trace, float)
-  a = np.asarray(a, float)
-  b = np.asarray(b, float)
+  a = np.asarray(a, float); b = np.asarray(b, float)
   d = b - a
   L2 = float(d @ d)
   if L2 < 1e-12:
@@ -226,8 +220,7 @@ def build_sim(spawn=(-1.2, 0.15)):
       data.qpos[7 + joint_names.index(name)] = value
   mujoco.mj_forward(model, data)
   ctrl = G1Controller(
-    model,
-    data,
+    model, data,
     ONNXPolicy(str(SCRIPT_DIR / "walker.onnx")),
     ONNXPolicy(str(SCRIPT_DIR / "croucher.onnx")),
     ONNXPolicy(str(SCRIPT_DIR / "rotator.onnx")),
@@ -253,11 +246,8 @@ def rotvec_between(R_cur, R_tgt):
 
 
 def R_from_axes(x, y):
-  x = np.array(x, float)
-  x /= np.linalg.norm(x)
-  y = np.array(y, float)
-  y -= x * (x @ y)
-  y /= np.linalg.norm(y)
+  x = np.array(x, float); x /= np.linalg.norm(x)
+  y = np.array(y, float); y -= x * (x @ y); y /= np.linalg.norm(y)
   return np.column_stack([x, y, np.cross(x, y)])
 
 
@@ -280,30 +270,23 @@ class ArmIK6:
   def __init__(self, model, ctrl):
     self.model = model
     self.site_id = ctrl.right_palm_site_id
-    jids = [
-      mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, n)
-      for n in ctrl.right_arm_joint_names
-    ]
+    jids = [mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_JOINT, n)
+            for n in ctrl.right_arm_joint_names]
     self.dof_idx = [model.jnt_dofadr[j] for j in jids]
     self.qpos_idx = [model.jnt_qposadr[j] for j in jids]
     self.lo = np.array([model.jnt_range[j][0] for j in jids])
     self.hi = np.array([model.jnt_range[j][1] for j in jids])
     # Arm actuators (named after their joints) and their proportional gains
     # -- what turns a bias torque into a position-command offset.
-    self.act_idx = [
-      mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_ACTUATOR, n)
-      for n in ctrl.right_arm_joint_names
-    ]
+    self.act_idx = [mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_ACTUATOR, n)
+                    for n in ctrl.right_arm_joint_names]
     self.kp = model.actuator_gainprm[self.act_idx, 0].copy()
     # Alternative IK seeds for `solve_ms`. DLS is a local method, so which
     # posture it starts from decides whether it finds a solution at all.
     self.q_default = np.array(
-      [ctrl.default_joint_pos[i] for i in ctrl.right_arm_indices], float
-    )
-    self.alt_seeds = [
-      self.q_default,
-      np.clip(0.5 * (self.lo + self.hi), self.lo, self.hi),
-    ]
+      [ctrl.default_joint_pos[i] for i in ctrl.right_arm_indices], float)
+    self.alt_seeds = [self.q_default,
+                      np.clip(0.5 * (self.lo + self.hi), self.lo, self.hi)]
     self.scratch = mujoco.MjData(model)
     self.jacp = np.zeros((3, model.nv))
     self.jacr = np.zeros((3, model.nv))
@@ -343,9 +326,8 @@ class ArmIK6:
     mujoco.mj_forward(self.model, d)
     return d.qfrc_bias[self.dof_idx] / self.kp
 
-  def solve_ms(
-    self, data, target_p, target_R=None, w_ori=0.5, iters=300, seed=None, tol=1e-3
-  ):
+  def solve_ms(self, data, target_p, target_R=None, w_ori=0.5, iters=300,
+               seed=None, tol=1e-3):
     """Multi-start `solve`. DLS is local, so its residual can report a target
     as unreachable when the arm merely cannot get there FROM ITS CURRENT
     POSTURE. Measured: a 15 cm straight-up lift solved to 0.002 mm from one
@@ -369,7 +351,8 @@ class ArmIK6:
         break
     return q, rp, rr
 
-  def solve(self, data, target_p, target_R=None, w_ori=0.5, iters=300, seed=None):
+  def solve(self, data, target_p, target_R=None, w_ori=0.5, iters=300,
+            seed=None):
     """DLS IK on scratch MjData. `seed` starts the arm from a given joint
     configuration instead of the measured one; that is what keeps consecutive
     Cartesian waypoints on the same IK branch (and makes them cheap: a
@@ -389,24 +372,19 @@ class ArmIK6:
       else:
         R_cur = d.site_xmat[self.site_id].reshape(3, 3)
         e = np.concatenate([e_p, w_ori * rotvec_between(R_cur, target_R)])
-        J = np.vstack([self.jacp[:, self.dof_idx], w_ori * self.jacr[:, self.dof_idx]])
+        J = np.vstack([self.jacp[:, self.dof_idx],
+                       w_ori * self.jacr[:, self.dof_idx]])
       if np.linalg.norm(e) < 1e-4:
         break
       dq = J.T @ np.linalg.solve(J @ J.T + 1e-4 * np.eye(J.shape[0]), e)
       d.qpos[self.qpos_idx] = np.clip(
-        d.qpos[self.qpos_idx] + np.clip(dq, -0.2, 0.2), self.lo, self.hi
-      )
+        d.qpos[self.qpos_idx] + np.clip(dq, -0.2, 0.2), self.lo, self.hi)
     mujoco.mj_kinematics(self.model, d)
     resid_p = float(np.linalg.norm(target_p - d.site_xpos[self.site_id]))
     resid_r = 0.0
     if target_R is not None:
-      resid_r = float(
-        np.degrees(
-          np.linalg.norm(
-            rotvec_between(d.site_xmat[self.site_id].reshape(3, 3), target_R)
-          )
-        )
-      )
+      resid_r = float(np.degrees(np.linalg.norm(
+        rotvec_between(d.site_xmat[self.site_id].reshape(3, 3), target_R))))
     return d.qpos[self.qpos_idx].copy(), resid_p, resid_r
 
 
@@ -414,27 +392,25 @@ class ArmIK6:
 # runner: physics loop + arm override + ramped grip + video
 # --------------------------------------------------------------------- #
 class Runner:
-  def __init__(
-    self, model, data, ctrl, ik, video_every=8, fps=25, video_name="e2e_run.mp4"
-  ):
+  def __init__(self, model, data, ctrl, ik, video_every=8, fps=25,
+               video_name="e2e_run.mp4"):
     self.model, self.data, self.ctrl, self.ik = model, data, ctrl, ik
     self.state = {"cs": 0, "tp": ctrl.default_joint_pos.copy()}
     self.q_cmd = None
-    self.grip_alpha = 0.0  # thumb (first 3 finger actuators)
-    self.grip_alpha_f = 0.0  # index + middle (last 4)
-    self.grip_cap = GRIP_CAP  # rad of preload beyond the measured angle,
-    # or None for the raw position command
+    self.grip_alpha = 0.0        # thumb (first 3 finger actuators)
+    self.grip_alpha_f = 0.0      # index + middle (last 4)
+    self.grip_cap = GRIP_CAP     # rad of preload beyond the measured angle,
+                                 # or None for the raw position command
     # qpos address of each finger actuator's joint, for the cap
-    self._fq = [
-      int(model.jnt_qposadr[model.actuator_trnid[a, 0]])
-      for a, _ in ctrl.right_finger_actuators
-    ]
+    self._fq = [int(model.jnt_qposadr[model.actuator_trnid[a, 0]])
+                for a, _ in ctrl.right_finger_actuators]
     self.renderer = mujoco.Renderer(model, 480, 640)
     self.cam = mujoco.MjvCamera()
-    self.cyl_bid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY, "red_block")
+    self.cyl_bid = mujoco.mj_name2id(model, mujoco.mjtObj.mjOBJ_BODY,
+                                     "red_block")
     self.video_every = video_every
-    self.palm_trace = None  # set to [] to record the executed palm path
-    self.ik_solves = 0  # waypoint IK solves spent by the controller
+    self.palm_trace = None       # set to [] to record the executed palm path
+    self.ik_solves = 0           # waypoint IK solves spent by the controller
     # M1.6 straightness telemetry: one row per goto/goto_track/touchdown.
     # `dev0_m` is THE measurement of the milestone: how far the executed palm
     # path strayed from the straight line between the two poses it was aimed
@@ -442,8 +418,8 @@ class Runner:
     self.move_log = []
     self.move_tag = ""
     self.writer = cv2.VideoWriter(
-      str(OUT_DIR / video_name), cv2.VideoWriter_fourcc(*"mp4v"), fps, (640, 480)
-    )
+      str(OUT_DIR / video_name), cv2.VideoWriter_fourcc(*"mp4v"),
+      fps, (640, 480))
     self.recording = True
 
   def step_once(self):
@@ -460,7 +436,8 @@ class Runner:
       if cap is not None and (GRIP_CAP_ONLY is None or k in GRIP_CAP_ONLY):
         # Never drive more than `cap` rad past where the finger actually is.
         q = float(self.data.qpos[self._fq[k]])
-        cmd = min(cmd, q + cap) if closed_val >= 0.0 else max(cmd, q - cap)
+        cmd = (min(cmd, q + cap) if closed_val >= 0.0
+               else max(cmd, q - cap))
       self.data.ctrl[act_id] = cmd
     # Gravity compensation, folded into the arm's POSITION SETPOINT rather
     # than injected as an external wrench. The actuator produces
@@ -479,7 +456,8 @@ class Runner:
       self.palm_trace.append(self.data.site_xpos[self.ik.site_id].copy())
     if self.recording and self.state["cs"] % self.video_every == 0:
       self.renderer.update_scene(self.data, camera="side_view")
-      self.writer.write(cv2.cvtColor(self.renderer.render(), cv2.COLOR_RGB2BGR))
+      self.writer.write(cv2.cvtColor(self.renderer.render(),
+                                     cv2.COLOR_RGB2BGR))
 
   def close_video(self):
     self.recording = False
@@ -530,11 +508,8 @@ class Runner:
     palm_p = self.data.site_xpos[self.ik.site_id].copy()
     palm_R = self.data.site_xmat[self.ik.site_id].reshape(3, 3).copy()
     pts = []
-    for bname in (
-      "right_hand_index_1_link",
-      "right_hand_middle_1_link",
-      "right_hand_thumb_2_link",
-    ):
+    for bname in ("right_hand_index_1_link", "right_hand_middle_1_link",
+                  "right_hand_thumb_2_link"):
       bid = mujoco.mj_name2id(self.model, mujoco.mjtObj.mjOBJ_BODY, bname)
       pts.append(palm_R.T @ (self.data.xpos[bid] - palm_p))
     self.set_grip(0.0)
@@ -569,11 +544,10 @@ class Runner:
       if self.state["cs"] % DECIMATION == 0:
         rem = q_star - self.q_cmd
         f = 1.0
-        if d_out > 1e-9:  # constant deceleration onto the target
-          f = min(
-            f, max(fl, float(np.sqrt(min(1.0, float(np.max(np.abs(rem))) / d_out))))
-          )
-        if d_in > 1e-9:  # ... and constant acceleration off the start
+        if d_out > 1e-9:      # constant deceleration onto the target
+          f = min(f, max(fl, float(np.sqrt(
+            min(1.0, float(np.max(np.abs(rem))) / d_out)))))
+        if d_in > 1e-9:       # ... and constant acceleration off the start
           gone = peak - float(np.max(np.abs(rem)))
           f = min(f, max(fl, float(np.sqrt(min(1.0, max(gone, 0.0) / d_in)))))
         step = rates * f
@@ -586,10 +560,8 @@ class Runner:
 
   def palm_pose(self):
     """Measured palm pose (position, rotation matrix)."""
-    return (
-      self.data.site_xpos[self.ik.site_id].copy(),
-      self.data.site_xmat[self.ik.site_id].reshape(3, 3).copy(),
-    )
+    return (self.data.site_xpos[self.ik.site_id].copy(),
+            self.data.site_xmat[self.ik.site_id].reshape(3, 3).copy())
 
   def plan_cartesian(self, target_p, target_R, n=None, iters=300, ray=False):
     """Feedforward Cartesian plan: palm-pose waypoints from where the palm is
@@ -632,22 +604,19 @@ class Runner:
     # retrying from other seeds only burns iterations and risks answering with
     # a wildly different posture instead of the deepest press along the line.
     solve = self.ik.solve if ray else self.ik.solve_ms
-    q_free, rp_free, rr_free = solve(self.data, target_p, target_R, iters=iters)
+    q_free, rp_free, rr_free = solve(self.data, target_p, target_R,
+                                     iters=iters)
     self.ik_solves += 1
-    wps = cartesian_waypoints(
-      p0, R0, target_p, target_R, n, step_m=CART_STEP_M / 2 if ray else None
-    )
+    wps = cartesian_waypoints(p0, R0, target_p, target_R, n,
+                              step_m=CART_STEP_M / 2 if ray else None)
     qs, seed = [], None
     worst = jump = 0.0
     truncated = False
-    for p, R in wps[:-1]:  # interior only; the endpoint is separate
-      q, rq, _ = (
-        self.ik.solve(self.data, p, R, iters=CART_SEED_ITERS, seed=seed)
-        if ray
-        else self.ik.solve_ms(
-          self.data, p, R, iters=CART_SEED_ITERS, seed=seed, tol=CART_WP_TOL
-        )
-      )
+    for p, R in wps[:-1]:            # interior only; the endpoint is separate
+      q, rq, _ = (self.ik.solve(self.data, p, R, iters=CART_SEED_ITERS,
+                                seed=seed) if ray else
+                  self.ik.solve_ms(self.data, p, R, iters=CART_SEED_ITERS,
+                                   seed=seed, tol=CART_WP_TOL))
       self.ik_solves += 1
       step = 0.0 if seed is None else float(np.max(np.abs(q - seed)))
       if not ray and (step > CART_JUMP_RAD or rq > CART_WP_TOL):
@@ -666,97 +635,54 @@ class Runner:
       # commanded when it is reachable (the better of the chain-seeded
       # solution and the unseeded one the joint-space controller would have
       # flown) and a branch change over that last segment is accepted.
-      q_end, rp_end, rr_end = solve(
-        self.data, target_p, target_R, iters=iters, seed=seed
-      )
+      q_end, rp_end, rr_end = solve(self.data, target_p, target_R,
+                                    iters=iters, seed=seed)
       self.ik_solves += 1
       step = 0.0 if seed is None else float(np.max(np.abs(q_end - seed)))
       if ray or rp_end <= max(rp_free + 0.003, CART_WP_TOL):
         qs.append(q_end)
         jump, rp, rr = max(jump, step), rp_end, rr_end
       elif rp_free <= CART_WP_TOL:
-        qs.append(q_free)  # chain-seeded endpoint was worse
-        jump = max(jump, 0.0 if seed is None else float(np.max(np.abs(q_free - seed))))
+        qs.append(q_free)            # chain-seeded endpoint was worse
+        jump = max(jump, 0.0 if seed is None
+                   else float(np.max(np.abs(q_free - seed))))
       else:
-        truncated = True  # the destination itself is unreachable
+        truncated = True             # the destination itself is unreachable
     if not qs:
       # Not even the first step along the line is followable. Refusing to move
       # is the honest answer for an unreachable destination: the alternative is
       # the 45 cm flail this guards against.
-      qs = (
-        [q_free]
-        if rp_free <= CART_WP_TOL
-        else [
-          self.q_cmd.copy()
-          if self.q_cmd is not None
-          else self.data.qpos[self.ik.qpos_idx].copy()
-        ]
-      )
-    return (
-      qs,
-      (rp, rr),
-      {
-        "wp_resid_m": worst,
-        "jump_rad": jump,
-        "n_wp": len(qs),
-        "ray": ray,
-        "truncated": truncated,
-        "free_resid_m": rp_free,
-        "flyable": not truncated,
-      },
-    )
+      qs = [q_free] if rp_free <= CART_WP_TOL else [
+        self.q_cmd.copy() if self.q_cmd is not None
+        else self.data.qpos[self.ik.qpos_idx].copy()]
+    return qs, (rp, rr), {
+      "wp_resid_m": worst, "jump_rad": jump, "n_wp": len(qs), "ray": ray,
+      "truncated": truncated, "free_resid_m": rp_free,
+      "flyable": not truncated,
+    }
 
-  def ramp_through(self, q_list, rate=0.012, settle=0.8, on_step=None, sync=None):
+  def ramp_through(self, q_list, rate=0.012, settle=0.8, on_step=None,
+                   sync=None):
     """Ramp through consecutive joint solutions. Only the last one settles:
     an intermediate settle would multiply the move's wall clock by the
     waypoint count for no benefit (the path is already straight)."""
     for i, q in enumerate(q_list):
       last = i == len(q_list) - 1
-      if self.ramp_to(
-        q, settle=(settle if last else 0.0), rate=rate, on_step=on_step, sync=sync
-      ):
+      if self.ramp_to(q, settle=(settle if last else 0.0), rate=rate,
+                      on_step=on_step, sync=sync):
         return True
     return False
 
-  def goto(
-    self,
-    target_p,
-    target_R,
-    rounds=2,
-    max_shift=0.06,
-    verbose="",
-    rate=0.012,
-    clamp_z_down=True,
-    cart=None,
-    on_step=None,
-    settle=0.8,
-  ):
-    return self.goto_track(
-      lambda: target_p,
-      target_R,
-      rounds,
-      max_shift,
-      verbose,
-      rate,
-      clamp_z_down,
-      cart,
-      on_step,
-      settle=settle,
-    )
+  def goto(self, target_p, target_R, rounds=2, max_shift=0.06, verbose="",
+           rate=0.012, clamp_z_down=True, cart=None, on_step=None,
+           settle=0.8):
+    return self.goto_track(lambda: target_p, target_R, rounds, max_shift,
+                           verbose, rate, clamp_z_down, cart, on_step,
+                           settle=settle)
 
-  def goto_track(
-    self,
-    target_fn,
-    target_R,
-    rounds=2,
-    max_shift=0.06,
-    verbose="",
-    rate=0.012,
-    clamp_z_down=True,
-    cart=None,
-    on_step=None,
-    settle=0.8,
-  ):
+  def goto_track(self, target_fn, target_R, rounds=2, max_shift=0.06,
+                 verbose="", rate=0.012, clamp_z_down=True, cart=None,
+                 on_step=None, settle=0.8):
     """Aim-and-correct rounds, each flown as a straight Cartesian palm path.
 
     The rounds are unchanged and load-bearing: the one-shot 4.85 cm error is
@@ -781,7 +707,7 @@ class Runner:
         wp_resid = max(wp_resid, diag["wp_resid_m"])
         wp_jump = max(wp_jump, diag["jump_rad"])
         if diag["truncated"]:
-          n_fallback += 1  # flew the followable prefix and stopped
+          n_fallback += 1            # flew the followable prefix and stopped
       else:
         q_star, rp, rr = self.ik.solve(self.data, target_p + shift, target_R)
         qs = [q_star]
@@ -790,21 +716,18 @@ class Runner:
       # contact stop ("descend until the hand reaches the tabletop"), and
       # re-aiming from there would only push the arm back into whatever stopped
       # it. Same semantics as `touchdown`.
-      stopped = self.ramp_through(
-        qs, rate=rate, sync=sync, on_step=on_step, settle=settle
-      )
+      stopped = self.ramp_through(qs, rate=rate, sync=sync, on_step=on_step,
+                                  settle=settle)
       if r == 0:  # the long move; rounds 1+ deliberately aim somewhere else
         aim0 = target_p + shift
         dev0 = seg_dev(self.palm_trace, p_start, aim0)
       target_p = np.asarray(target_fn(), float)
       e_p = target_p - self.data.site_xpos[self.ik.site_id]
       if verbose:
-        print(
-          f"    {verbose} round{r}: palm err "
-          f"{np.linalg.norm(e_p) * 100:.1f} cm "
-          f"vec {np.round(e_p * 100, 1).tolist()} "
-          f"(ik resid {rp * 1000:.0f} mm/{rr:.0f} deg)"
-        )
+        print(f"    {verbose} round{r}: palm err "
+              f"{np.linalg.norm(e_p) * 100:.1f} cm "
+              f"vec {np.round(e_p * 100, 1).tolist()} "
+              f"(ik resid {rp * 1000:.0f} mm/{rr:.0f} deg)")
       shift = shift + np.clip(e_p, -max_shift, max_shift)
       if clamp_z_down:  # pick descent: never re-aim downward into the table
         shift[2] = max(shift[2], 0.0)
@@ -813,70 +736,35 @@ class Runner:
     trace, self.palm_trace = self.palm_trace, prev_trace
     target_p = np.asarray(target_fn(), float)
     err = float(np.linalg.norm(target_p - self.data.site_xpos[self.ik.site_id]))
-    self._log_move(
-      p_start,
-      aim0,
-      target_p,
-      trace,
-      dev0,
-      err,
-      rp,
-      cart,
-      n_wp,
-      time.time() - t0,
-      self.ik_solves - s0,
-      extra={
-        "wp_resid_mm": round(wp_resid * 1000, 1),
-        "wp_jump_rad": round(wp_jump, 3),
-        "fallbacks": n_fallback,
-        "rounds": rounds,
-      },
-    )
+    self._log_move(p_start, aim0, target_p, trace, dev0, err, rp, cart, n_wp,
+                   time.time() - t0, self.ik_solves - s0,
+                   extra={"wp_resid_mm": round(wp_resid * 1000, 1),
+                          "wp_jump_rad": round(wp_jump, 3),
+                          "fallbacks": n_fallback, "rounds": rounds})
     return err
 
-  def _log_move(
-    self,
-    p_start,
-    aim0,
-    target_p,
-    trace,
-    dev0,
-    err,
-    resid,
-    cart,
-    n_wp,
-    wall,
-    solves,
-    tag=None,
-    extra=None,
-  ):
+  def _log_move(self, p_start, aim0, target_p, trace, dev0, err, resid, cart,
+                n_wp, wall, solves, tag=None, extra=None):
     """One straightness record. `dev0_m` is the deviation of the executed palm
     path from the straight line of the FIRST aim (the long move); `dev_all_m`
     also covers the aim-and-correct rounds, which deliberately re-aim."""
-    self.move_log.append(
-      {
-        "tag": tag if tag is not None else (self.move_tag or "?"),
-        "cart": bool(cart),
-        "n_wp": int(n_wp),
-        "dist_m": round(
-          float(np.linalg.norm((aim0 if aim0 is not None else target_p) - p_start)), 4
-        ),
-        "dev0_m": round(float(dev0), 4),
-        "dev_all_m": round(seg_dev(trace, p_start, target_p), 4),
-        "err_m": round(float(err), 4),
-        "dev0_up_m": round(
-          seg_dev_z(trace, p_start, aim0 if aim0 is not None else target_p)[0], 4
-        ),
-        "dev0_dn_m": round(
-          seg_dev_z(trace, p_start, aim0 if aim0 is not None else target_p)[1], 4
-        ),
-        "resid_mm": round(float(resid) * 1000, 2),
-        "wall_s": round(float(wall), 2),
-        "ik_solves": int(solves),
-        "n_samples": len(trace),
-        **(extra or {}),
-      }
-    )
+    self.move_log.append({
+      "tag": tag if tag is not None else (self.move_tag or "?"),
+      "cart": bool(cart), "n_wp": int(n_wp),
+      "dist_m": round(float(np.linalg.norm(
+        (aim0 if aim0 is not None else target_p) - p_start)), 4),
+      "dev0_m": round(float(dev0), 4),
+      "dev_all_m": round(seg_dev(trace, p_start, target_p), 4),
+      "err_m": round(float(err), 4),
+      "dev0_up_m": round(seg_dev_z(
+        trace, p_start, aim0 if aim0 is not None else target_p)[0], 4),
+      "dev0_dn_m": round(seg_dev_z(
+        trace, p_start, aim0 if aim0 is not None else target_p)[1], 4),
+      "resid_mm": round(float(resid) * 1000, 2),
+      "wall_s": round(float(wall), 2), "ik_solves": int(solves),
+      "n_samples": len(trace),
+      **(extra or {}),
+    })
 
   def snap(self, name, lookat=None):
     if lookat is None:
@@ -887,10 +775,8 @@ class Runner:
       self.cam.azimuth = 160
       self.cam.elevation = -20
       self.renderer.update_scene(self.data, camera=self.cam)
-    cv2.imwrite(
-      str(OUT_DIR / f"{name}.png"),
-      cv2.cvtColor(self.renderer.render(), cv2.COLOR_RGB2BGR),
-    )
+    cv2.imwrite(str(OUT_DIR / f"{name}.png"),
+                cv2.cvtColor(self.renderer.render(), cv2.COLOR_RGB2BGR))
 
   def cyl_pos(self):
     return self.data.xpos[self.cyl_bid].copy()
@@ -904,54 +790,28 @@ class Runner:
     pairs = set()
     for i in range(self.data.ncon):
       c = self.data.contact[i]
-      b1 = (
-        mujoco.mj_id2name(
-          self.model, mujoco.mjtObj.mjOBJ_BODY, self.model.geom_bodyid[c.geom1]
-        )
-        or "?"
-      )
-      b2 = (
-        mujoco.mj_id2name(
-          self.model, mujoco.mjtObj.mjOBJ_BODY, self.model.geom_bodyid[c.geom2]
-        )
-        or "?"
-      )
-      if (
-        (needle in b1 or needle in b2)
-        and "ankle" not in b1 + b2
-        and "world" not in (b1, b2)
-      ):
+      b1 = mujoco.mj_id2name(self.model, mujoco.mjtObj.mjOBJ_BODY,
+                             self.model.geom_bodyid[c.geom1]) or "?"
+      b2 = mujoco.mj_id2name(self.model, mujoco.mjtObj.mjOBJ_BODY,
+                             self.model.geom_bodyid[c.geom2]) or "?"
+      if (needle in b1 or needle in b2) and "ankle" not in b1 + b2 \
+         and "world" not in (b1, b2):
         pairs.add(f"{b1}<->{b2}")
     return pairs
 
   def pair_contact(self, name_a, name_b):
     for i in range(self.data.ncon):
       c = self.data.contact[i]
-      b1 = (
-        mujoco.mj_id2name(
-          self.model, mujoco.mjtObj.mjOBJ_BODY, self.model.geom_bodyid[c.geom1]
-        )
-        or ""
-      )
-      b2 = (
-        mujoco.mj_id2name(
-          self.model, mujoco.mjtObj.mjOBJ_BODY, self.model.geom_bodyid[c.geom2]
-        )
-        or ""
-      )
+      b1 = mujoco.mj_id2name(self.model, mujoco.mjtObj.mjOBJ_BODY,
+                             self.model.geom_bodyid[c.geom1]) or ""
+      b2 = mujoco.mj_id2name(self.model, mujoco.mjtObj.mjOBJ_BODY,
+                             self.model.geom_bodyid[c.geom2]) or ""
       if {name_a, name_b} <= {b1, b2}:
         return True
     return False
 
-  def touchdown(
-    self,
-    R_hold,
-    max_drop=0.06,
-    seat=0.5,
-    rate=0.003,
-    seat_grip=None,
-    table="table_white",
-  ):
+  def touchdown(self, R_hold, max_drop=0.06, seat=0.5, rate=0.003,
+                seat_grip=None, table="table_white"):
     """Lower the palm slowly (orientation held) until the cylinder touches
     the table, then keep pressing gently for `seat` seconds. Returns True if
     contact was made.
@@ -1003,35 +863,23 @@ class Runner:
       qs, (resid, _), diag = self.plan_cartesian(target, R_hold, ray=True)
     else:
       q_star, resid, _ = self.ik.solve(self.data, target, R_hold)
-      qs, diag = [q_star], {"wp_resid_m": 0.0, "jump_rad": 0.0, "truncated": False}
+      qs, diag = [q_star], {"wp_resid_m": 0.0, "jump_rad": 0.0,
+                            "truncated": False}
     n_wp = len(qs)
-    self.ramp_through(
-      qs, rate=rate, settle=0.0, on_step=monitor, sync=False if legacy_shape else None
-    )
+    self.ramp_through(qs, rate=rate, settle=0.0, on_step=monitor,
+                      sync=False if legacy_shape else None)
     trace, self.palm_trace = self.palm_trace, prev_trace
     p_end, _ = self.palm_pose()
     # The descent stops on contact, so measure straightness against the part of
     # the line it actually flew: p_start -> where it stopped.
-    self._log_move(
-      p_start,
-      p_end,
-      p_end,
-      trace,
-      seg_dev(trace, p_start, p_end),
-      0.0,
-      resid,
-      CART_PATH and not legacy_shape,
-      n_wp,
-      time.time() - t0,
-      self.ik_solves - s0,
-      tag=self.move_tag or "touchdown",
-      extra={
-        "wp_resid_mm": round(diag["wp_resid_m"] * 1000, 1),
-        "wp_jump_rad": round(diag["jump_rad"], 3),
-        "fallbacks": int(bool(diag.get("truncated"))),
-        "rounds": 1,
-      },
-    )
+    self._log_move(p_start, p_end, p_end, trace, seg_dev(trace, p_start, p_end),
+                   0.0, resid, CART_PATH and not legacy_shape, n_wp,
+                   time.time() - t0, self.ik_solves - s0,
+                   tag=self.move_tag or "touchdown",
+                   extra={"wp_resid_mm": round(diag["wp_resid_m"] * 1000, 1),
+                          "wp_jump_rad": round(diag["jump_rad"], 3),
+                          "fallbacks": int(bool(diag.get("truncated"))),
+                          "rounds": 1})
     self.run(0.3)
     return self.pair_contact("red_block", "table_white")
 
@@ -1039,18 +887,10 @@ class Runner:
     n = 0
     for i in range(self.data.ncon):
       c = self.data.contact[i]
-      b1 = (
-        mujoco.mj_id2name(
-          self.model, mujoco.mjtObj.mjOBJ_BODY, self.model.geom_bodyid[c.geom1]
-        )
-        or ""
-      )
-      b2 = (
-        mujoco.mj_id2name(
-          self.model, mujoco.mjtObj.mjOBJ_BODY, self.model.geom_bodyid[c.geom2]
-        )
-        or ""
-      )
+      b1 = mujoco.mj_id2name(self.model, mujoco.mjtObj.mjOBJ_BODY,
+                             self.model.geom_bodyid[c.geom1]) or ""
+      b2 = mujoco.mj_id2name(self.model, mujoco.mjtObj.mjOBJ_BODY,
+                             self.model.geom_bodyid[c.geom2]) or ""
       if ("red_block" in b1 + b2) and ("right_hand" in b1 + b2):
         n += 1
     return n
@@ -1076,16 +916,16 @@ class Runner:
 # memory, which is a term of its own observation, and stand for
 # `WALK_STALL_PAUSE` s. That is the same handoff `set_crouch` already does when
 # it gives the walker back control.
-WALK_STALL_S = 2.0  # window with no progress that counts as a stall
-WALK_STALL_M = 0.03  # ... and the progress that clears it
+WALK_STALL_S = 2.0        # window with no progress that counts as a stall
+WALK_STALL_M = 0.03       # ... and the progress that clears it
 # Only count a stall while the goal is far enough that the commanded speed is
 # the full `cap`. `speed = max(min(2*dist, cap), 0.30)`, so below dist 0.20 the
 # command is riding the 0.30 floor, which is the walker's own deadband edge --
 # standing still there is the documented "walk_to floors out at 7-9 cm", a
 # different phenomenon, and 671 of the 745 detections over 150 episodes are it.
 WALK_STALL_MIN_D = 0.20
-WALK_STALL_KICKS = 0  # recovery kicks a single walk_to may spend (0 = off)
-WALK_STALL_PAUSE = 0.3  # seconds the kick's own command is held
+WALK_STALL_KICKS = 0      # recovery kicks a single walk_to may spend (0 = off)
+WALK_STALL_PAUSE = 0.3    # seconds the kick's own command is held
 # What the kick actually commands for `WALK_STALL_PAUSE` seconds. `last_action`
 # is zeroed in every mode -- it is a term of the policy's own observation, so
 # clearing it is the cheapest available perturbation -- but on its own it only
@@ -1096,7 +936,7 @@ WALK_STALL_PAUSE = 0.3  # seconds the kick's own command is held
 #   "turn"   - yaw burst at the clip
 #   "strafe" - sidestep at the lateral clip
 WALK_STALL_MODE = "reset"
-STALL_LOG = []  # (goal_dist_at_detection, sim_time, kicked)
+STALL_LOG = []            # (goal_dist_at_detection, sim_time, kicked)
 
 
 def walk_to(runner, goal_xy, goal_yaw=0.0, timeout=20.0, tol=0.07, cap=0.4):
@@ -1111,7 +951,8 @@ def walk_to(runner, goal_xy, goal_yaw=0.0, timeout=20.0, tol=0.07, cap=0.4):
       err_w = goal_xy - data.qpos[:2]
       yaw = base_yaw(data)
       c, s = np.cos(yaw), np.sin(yaw)
-      err_b = np.array([c * err_w[0] + s * err_w[1], -s * err_w[0] + c * err_w[1]])
+      err_b = np.array([c * err_w[0] + s * err_w[1],
+                        -s * err_w[0] + c * err_w[1]])
       yaw_err = np.arctan2(np.sin(goal_yaw - yaw), np.cos(goal_yaw - yaw))
       dist = np.linalg.norm(err_b)
       scale = err_b / max(dist, 1e-6)
@@ -1120,10 +961,12 @@ def walk_to(runner, goal_xy, goal_yaw=0.0, timeout=20.0, tol=0.07, cap=0.4):
       ctrl.lin_vel_y = float(np.clip(speed * scale[1], -0.3, 0.3))
       ctrl.ang_vel_z = float(np.clip(1.5 * yaw_err, -0.6, 0.6))
       if WALK_STALL_S and float(data.time) - mark_t >= WALK_STALL_S:
-        stalled = mark_d - dist < WALK_STALL_M and dist > WALK_STALL_MIN_D
+        stalled = (mark_d - dist < WALK_STALL_M
+                   and dist > WALK_STALL_MIN_D)
         if stalled:
           do_kick = kicks < WALK_STALL_KICKS
-          STALL_LOG.append((round(dist, 3), round(float(data.time), 1), bool(do_kick)))
+          STALL_LOG.append((round(dist, 3), round(float(data.time), 1),
+                            bool(do_kick)))
           if do_kick:
             kicks += 1
             ctrl.lin_vel_x = ctrl.lin_vel_y = ctrl.ang_vel_z = 0.0
@@ -1142,3 +985,4 @@ def walk_to(runner, goal_xy, goal_yaw=0.0, timeout=20.0, tol=0.07, cap=0.4):
   ctrl.lin_vel_x = ctrl.lin_vel_y = ctrl.ang_vel_z = 0.0
   runner.run(1.5)
   return float(np.linalg.norm(goal_xy - data.qpos[:2]))
+

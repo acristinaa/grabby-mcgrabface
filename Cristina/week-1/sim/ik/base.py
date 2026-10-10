@@ -24,18 +24,12 @@ def crouch_step(ctrl, extra2):
   """Walker-layout obs + 2 extra dims, croucher action pipeline."""
   lin_vel, ang_vel = ctrl._get_base_velocities()
   proj_gravity = ctrl._get_projected_gravity()
-  obs = np.concatenate(
-    [
-      lin_vel,
-      ang_vel,
-      proj_gravity,
-      ctrl._get_joint_positions(),
-      ctrl._get_joint_velocities(),
-      ctrl.last_action,
-      np.zeros(3, np.float32),  # cmd: trained at zero
-      np.asarray(extra2, np.float32),
-    ]
-  ).astype(np.float32)
+  obs = np.concatenate([
+    lin_vel, ang_vel, proj_gravity,
+    ctrl._get_joint_positions(), ctrl._get_joint_velocities(),
+    ctrl.last_action, np.zeros(3, np.float32),  # cmd: trained at zero
+    np.asarray(extra2, np.float32),
+  ]).astype(np.float32)
   action = CROUCHER(obs)
   target = ctrl.default_joint_pos + action * ctrl.action_scales
   for idx in ctrl.arm_indices:
@@ -45,9 +39,8 @@ def crouch_step(ctrl, extra2):
 
 
 def yaw_err_to(data, goal_yaw):
-  return np.arctan2(
-    np.sin(goal_yaw - ep.base_yaw(data)), np.cos(goal_yaw - ep.base_yaw(data))
-  )
+  return np.arctan2(np.sin(goal_yaw - ep.base_yaw(data)),
+                    np.cos(goal_yaw - ep.base_yaw(data)))
 
 
 def rotate_to(runner, goal_yaw, tol=np.radians(8), timeout=8.0):
@@ -64,18 +57,17 @@ def rotate_to(runner, goal_yaw, tol=np.radians(8), timeout=8.0):
     runner.step_once()
     if abs(yaw_err_to(data, goal_yaw)) < tol:
       break
-    if data.qpos[2] < 0.5:
+    if data.qpos[2] < 0.5:  # losing balance: hand back to the walker now
       print("    [rotate_to] ABORTING burst: pelvis dropped below 0.5")
       break
-  ctrl.walker_policy = saved
+  ctrl.walker_policy = saved  # back to walker, settle standing
   ctrl.ang_vel_z = 0.0
   runner.run(1.0)
   return float(np.degrees(abs(yaw_err_to(data, goal_yaw))))
 
 
-def walk_to_pose(
-  runner, goal_xy, goal_yaw, standoff=0.60, direct_yaw_tol=30.0, direct_min_dist=0.5
-):
+def walk_to_pose(runner, goal_xy, goal_yaw, standoff=0.60,
+                 direct_yaw_tol=30.0, direct_min_dist=0.5):
   """Full (x, y, yaw) base pose from the measured strengths of each policy.
 
   The walker is most accurate on ONE long straight leg and does converge
@@ -96,12 +88,14 @@ def walk_to_pose(
   else:
     heading = np.array([np.cos(goal_yaw), np.sin(goal_yaw)])
     stage = goal_xy - standoff * heading
-    # Translate to staging WITHOUT turning; the walker is omnidirectional, and every extra in-place spin is both drift and a fall risk (a ~177 deg rotator burst while holding a loaded outstretched arm fell the robot).
+    # Translate to staging WITHOUT turning; the walker is omnidirectional,
+    # and every extra in-place spin is both drift and a fall risk (a ~177 deg
+    # rotator burst while holding a loaded outstretched arm fell the robot).
     if np.linalg.norm(stage - data.qpos[:2]) > 0.15:
       hold_yaw = ep.base_yaw(data)
       ep.walk_to(runner, stage, goal_yaw=hold_yaw, timeout=30.0)
     if abs(yaw_err_to(data, goal_yaw)) > np.radians(12):
-      rotate_to(runner, goal_yaw)
+      rotate_to(runner, goal_yaw)           # the single rotation, at staging
     ep.walk_to(runner, goal_xy, goal_yaw=goal_yaw, timeout=20.0)
 
   pos_err = float(np.linalg.norm(goal_xy - data.qpos[:2]))
