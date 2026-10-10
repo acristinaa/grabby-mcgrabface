@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+Cristina/week-1/sim/assets/
+Cristina/week-1/sim/.venv/
+Cristina/week-1/sim/eval/results/
+Cristina/week-1/sim/ik/frames/
+Cristina/week-1/sim/**/__pycache__/
+MUJOCO_LOG.TXT
