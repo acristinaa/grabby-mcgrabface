@@ -1,0 +1,404 @@
+{
+ "passed": 6,
+ "total": 25,
+ "rows": [
+  {
+   "dx_m": -0.03,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0007,
+    "right": 0.0007
+   },
+   "lift_height_m": 0.0844,
+   "forbidden": [
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.03,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0007,
+    "right": 0.0008
+   },
+   "lift_height_m": 0.0841,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.03,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.03,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.03,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.045,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0009,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.0854,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.045,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0007,
+    "right": 0.0007
+   },
+   "lift_height_m": 0.0841,
+   "forbidden": [
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.045,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0007,
+    "right": 0.0008
+   },
+   "lift_height_m": 0.0843,
+   "forbidden": [
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.045,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0008
+   },
+   "lift_height_m": 0.0841,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.045,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.06,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.008,
+    "right": 0.0099
+   },
+   "lift_height_m": 0.0968,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.06,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0022,
+    "right": 0.0035
+   },
+   "lift_height_m": 0.0981,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.06,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0007
+   },
+   "lift_height_m": 0.0845,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.06,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0007,
+    "right": 0.0007
+   },
+   "lift_height_m": 0.0842,
+   "forbidden": [
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.06,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0007,
+    "right": 0.0007
+   },
+   "lift_height_m": 0.0843,
+   "forbidden": [
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.075,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0204,
+    "right": 0.0221
+   },
+   "lift_height_m": 0.0693,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.075,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0136,
+    "right": 0.0153
+   },
+   "lift_height_m": 0.0927,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.075,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0071,
+    "right": 0.009
+   },
+   "lift_height_m": 0.0969,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.075,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0022,
+    "right": 0.0033
+   },
+   "lift_height_m": 0.0975,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.075,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0009,
+    "right": 0.0008
+   },
+   "lift_height_m": 0.0847,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.09,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "ball_carried_to_basket",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0331,
+    "right": 0.0346
+   },
+   "lift_height_m": 0.0779,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.09,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0264,
+    "right": 0.0278
+   },
+   "lift_height_m": 0.0616,
+   "forbidden": [
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.09,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0199,
+    "right": 0.0214
+   },
+   "lift_height_m": 0.0701,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.09,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0139,
+    "right": 0.0154
+   },
+   "lift_height_m": 0.0926,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.09,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0083,
+    "right": 0.0098
+   },
+   "lift_height_m": 0.0968,
+   "forbidden": [
+    "lh_left_pinky_distal_link->table",
+    "rh_right_pinky_tip->table"
+   ]
+  }
+ ]
+}

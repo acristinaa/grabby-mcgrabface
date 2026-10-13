@@ -1,0 +1,17 @@
+<!-- Adapterflansch zwischen G1-Handgelenk (left_wrist_yaw_link) und BrainCo Revo2.
+     Quelle: unitreerobotics/unitree_ros (BSD-3-Clause, siehe LICENSE), Commit 43e9f3e,
+     robots/g1_with_brainco_hand/g1_29dof_mode_15_brainco_hand.urdf, Link left_base2_link
+     (Mesh, Masse, Traegheit unveraendert). Sitz: 0.0415 m vor dem Handgelenk, ohne Drehung.
+     Nur Sichtgeometrie und Masse, keine Kollision - die Handbasis liegt direkt davor. -->
+<mujoco model="unitree-g1-brainco-adapter-left">
+  <compiler angle="radian"/>
+  <asset>
+    <mesh name="base2_link" file="meshes/left_base2_link.STL"/>
+  </asset>
+  <worldbody>
+    <body name="base2_link">
+      <inertial pos="-0.002834 0 0.00000145" mass="0.02280635" fullinertia="0.00000768 0.0000058 0.00000427 0 0 0"/>
+      <geom type="mesh" mesh="base2_link" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+    </body>
+  </worldbody>
+</mujoco>
