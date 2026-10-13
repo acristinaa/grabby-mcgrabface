@@ -1,0 +1,5060 @@
+{
+  "trials": 30,
+  "passed_trials": 30,
+  "success_rate": 1.0,
+  "jitter_m": 0.02,
+  "distractors": true,
+  "randomize": false,
+  "varied_groups": [],
+  "seed": 0,
+  "failures_by_first_failed_check": {},
+  "criteria": {
+    "min_lift_m": 0.06,
+    "check_s": 3.0,
+    "in_basket_margin_m": 0.005,
+    "floor_tolerance_m": 0.005,
+    "max_speed_m_s": 0.01,
+    "max_spin_rad_s": 0.1,
+    "forbidden": [
+      "table",
+      "volleyball_stand",
+      "basket",
+      "distractor_box",
+      "distractor_can",
+      "distractor_red_cylinder",
+      "distractor_purple_cylinder",
+      "distractor_yellow_block"
+    ]
+  },
+  "fingers_curled": [
+    0.3,
+    0.3,
+    0.12,
+    0.12,
+    0.12,
+    0.12
+  ],
+  "results": [
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3495,
+        0.2318,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.087,
+      "touch_error_m": {
+        "left": 0.0012,
+        "right": 0.0012
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0014,
+        0.0006
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0502,
+      "ball_end": [
+        0.3266,
+        -0.2713,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0349,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.169,
+          "elbow_minus_wrist_z_m": -0.002,
+          "elbow_out_of_shoulder_m": 0.035,
+          "elbow_angle_deg": 11.1,
+          "arm_deg": [
+            -30.399999618530273,
+            -3.799999952316284,
+            -0.4000000059604645,
+            11.100000381469727,
+            -19.799999237060547,
+            18.200000762939453,
+            10.600000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.169,
+          "elbow_minus_wrist_z_m": -0.002,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 11.1,
+          "arm_deg": [
+            -30.299999237060547,
+            4.0,
+            0.20000000298023224,
+            11.100000381469727,
+            19.5,
+            18.200000762939453,
+            -10.399999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0055,
+        -0.0092
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7251333149423735,
+          "y_m": 0.2242560234262878,
+          "yaw_deg": -179.0141399387467
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3583,
+        0.2223,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0868,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0003,
+        -0.0007
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0502,
+      "ball_end": [
+        0.377,
+        -0.2352,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0335,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.168,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 12.1,
+          "arm_deg": [
+            -31.200000762939453,
+            -3.9000000953674316,
+            0.10000000149011612,
+            12.100000381469727,
+            -19.5,
+            17.899999618530273,
+            10.199999809265137
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.168,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 12.2,
+          "arm_deg": [
+            -31.100000381469727,
+            4.099999904632568,
+            -0.20000000298023224,
+            12.199999809265137,
+            19.399999618530273,
+            17.899999618530273,
+            -10.100000381469727
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0143,
+        -0.0187
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7461842558370659,
+          "y_m": 0.13173480898129322,
+          "yaw_deg": 54.16533945641387
+        },
+        "distractor_red_cylinder": {
+          "x_m": 0.7550430634568124,
+          "y_m": -0.11091974656692523,
+          "yaw_deg": 25.750739062713937
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.7357481500825879,
+          "y_m": -0.21554550110863002,
+          "yaw_deg": 44.34737208697527
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_red_cylinder": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3274,
+        0.2543,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0875,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0051,
+        0.0032
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0505,
+      "ball_end": [
+        0.3292,
+        -0.2327,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.017,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.036,
+          "elbow_angle_deg": 9.0,
+          "arm_deg": [
+            -28.700000762939453,
+            -3.700000047683716,
+            -1.2000000476837158,
+            9.0,
+            -20.100000381469727,
+            18.799999237060547,
+            11.100000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 9.0,
+          "arm_deg": [
+            -28.700000762939453,
+            3.9000000953674316,
+            1.0,
+            9.0,
+            19.899999618530273,
+            18.899999618530273,
+            -10.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0166,
+        0.0133
+      ],
+      "distractors": {
+        "distractor_can": {
+          "x_m": 0.729807421561023,
+          "y_m": -0.3504969803646757,
+          "yaw_deg": -58.99785820356227
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.6850151059551389,
+          "y_m": -0.21279265489493954,
+          "yaw_deg": -161.27233161681255
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_can": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3402,
+        0.2289,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0879,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0088,
+        0.0059
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0505,
+      "ball_end": [
+        0.3152,
+        -0.2737,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0436,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.173,
+          "elbow_minus_wrist_z_m": -0.004,
+          "elbow_out_of_shoulder_m": 0.037,
+          "elbow_angle_deg": 7.1,
+          "arm_deg": [
+            -27.200000762939453,
+            -3.5999999046325684,
+            -1.899999976158142,
+            7.099999904632568,
+            -20.5,
+            19.299999237060547,
+            11.600000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.173,
+          "elbow_minus_wrist_z_m": -0.004,
+          "elbow_out_of_shoulder_m": 0.036,
+          "elbow_angle_deg": 7.1,
+          "arm_deg": [
+            -27.200000762939453,
+            3.5999999046325684,
+            2.0,
+            7.099999904632568,
+            20.5,
+            19.299999237060547,
+            -11.600000381469727
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0038,
+        -0.0121
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7283720308329891,
+          "y_m": -0.09577178054617172,
+          "yaw_deg": -142.02169935471738
+        },
+        "distractor_red_cylinder": {
+          "x_m": 0.5887131295681503,
+          "y_m": 0.38617527408355284,
+          "yaw_deg": 161.61972297759553
+        },
+        "distractor_yellow_block": {
+          "x_m": 0.7518949287203623,
+          "y_m": -0.29848388583193525,
+          "yaw_deg": 82.44544214747138
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_red_cylinder": 0.0,
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3611,
+        0.2597,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0849,
+      "touch_error_m": {
+        "left": 0.0009,
+        "right": 0.0009
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0189,
+        -0.0137
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3089,
+        -0.2059,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0496,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.156,
+          "elbow_minus_wrist_z_m": 0.007,
+          "elbow_out_of_shoulder_m": 0.029,
+          "elbow_angle_deg": 23.8,
+          "arm_deg": [
+            -40.0,
+            -4.5,
+            5.0,
+            23.799999237060547,
+            -16.700000762939453,
+            14.100000381469727,
+            7.0
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.156,
+          "elbow_minus_wrist_z_m": 0.007,
+          "elbow_out_of_shoulder_m": 0.029,
+          "elbow_angle_deg": 23.8,
+          "arm_deg": [
+            -40.0,
+            4.5,
+            -5.0,
+            23.799999237060547,
+            16.799999237060547,
+            14.0,
+            -7.099999904632568
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0171,
+        0.0187
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7353166826210433,
+          "y_m": -0.24937755131492648,
+          "yaw_deg": 170.1463729762638
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.7355652000890812,
+          "y_m": 0.25467532375902563,
+          "yaw_deg": -7.204347429180418
+        },
+        "distractor_yellow_block": {
+          "x_m": 0.6944682950249772,
+          "y_m": -0.06558982534417465,
+          "yaw_deg": 118.72943470011698
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_purple_cylinder": 0.0,
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3244,
+        0.2356,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0887,
+      "touch_error_m": {
+        "left": 0.001,
+        "right": 0.001
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.016,
+        0.0109
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0508,
+      "ball_end": [
+        0.3124,
+        -0.2668,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0408,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.176,
+          "elbow_minus_wrist_z_m": -0.006,
+          "elbow_out_of_shoulder_m": 0.039,
+          "elbow_angle_deg": 3.4,
+          "arm_deg": [
+            -24.100000381469727,
+            -3.0,
+            -3.700000047683716,
+            3.4000000953674316,
+            -21.5,
+            20.100000381469727,
+            12.800000190734863
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.176,
+          "elbow_minus_wrist_z_m": -0.006,
+          "elbow_out_of_shoulder_m": 0.038,
+          "elbow_angle_deg": 3.4,
+          "arm_deg": [
+            -24.100000381469727,
+            3.200000047683716,
+            3.5,
+            3.4000000953674316,
+            21.299999237060547,
+            20.200000762939453,
+            -12.699999809265137
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0196,
+        -0.0054
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7441726680905806,
+          "y_m": 0.19574074355229812,
+          "yaw_deg": -68.81134942106604
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3348,
+        0.2555,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0869,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0001,
+        -0.0006
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0502,
+      "ball_end": [
+        0.3256,
+        -0.2749,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0385,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.169,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.035,
+          "elbow_angle_deg": 11.9,
+          "arm_deg": [
+            -31.0,
+            -3.9000000953674316,
+            -0.0,
+            11.899999618530273,
+            -19.600000381469727,
+            18.0,
+            10.300000190734863
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.169,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 11.9,
+          "arm_deg": [
+            -31.0,
+            4.099999904632568,
+            -0.20000000298023224,
+            11.899999618530273,
+            19.299999237060547,
+            18.0,
+            -10.199999809265137
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0092,
+        0.0145
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.6998451357998722,
+          "y_m": 0.22175813265899033,
+          "yaw_deg": 60.44018600568644
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.7465381137566696,
+          "y_m": 0.04850660636467613,
+          "yaw_deg": 28.200929373458163
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3318,
+        0.242,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0878,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0082,
+        0.0054
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0505,
+      "ball_end": [
+        0.3141,
+        -0.2563,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0336,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.173,
+          "elbow_minus_wrist_z_m": -0.004,
+          "elbow_out_of_shoulder_m": 0.037,
+          "elbow_angle_deg": 7.3,
+          "arm_deg": [
+            -27.399999618530273,
+            -3.5999999046325684,
+            -1.899999976158142,
+            7.300000190734863,
+            -20.5,
+            19.200000762939453,
+            11.5
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.173,
+          "elbow_minus_wrist_z_m": -0.004,
+          "elbow_out_of_shoulder_m": 0.035,
+          "elbow_angle_deg": 7.4,
+          "arm_deg": [
+            -27.399999618530273,
+            3.799999952316284,
+            1.7000000476837158,
+            7.400000095367432,
+            20.299999237060547,
+            19.299999237060547,
+            -11.399999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0122,
+        0.001
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.6504186325636788,
+          "y_m": 0.33956865682650345,
+          "yaw_deg": 32.353210195542175
+        },
+        "distractor_can": {
+          "x_m": 0.7765581626596633,
+          "y_m": -0.33962137916927787,
+          "yaw_deg": -0.009783482897338658
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.6568126388126301,
+          "y_m": -0.25499087502501955,
+          "yaw_deg": -40.29597655757308
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_can": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3265,
+        0.25,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0878,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0077,
+        0.0051
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0505,
+      "ball_end": [
+        0.3131,
+        -0.26,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0363,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.172,
+          "elbow_minus_wrist_z_m": -0.004,
+          "elbow_out_of_shoulder_m": 0.037,
+          "elbow_angle_deg": 7.6,
+          "arm_deg": [
+            -27.600000381469727,
+            -3.5,
+            -1.7999999523162842,
+            7.599999904632568,
+            -20.600000381469727,
+            19.100000381469727,
+            11.5
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.173,
+          "elbow_minus_wrist_z_m": -0.004,
+          "elbow_out_of_shoulder_m": 0.035,
+          "elbow_angle_deg": 7.6,
+          "arm_deg": [
+            -27.600000381469727,
+            3.700000047683716,
+            1.7000000476837158,
+            7.599999904632568,
+            20.299999237060547,
+            19.200000762939453,
+            -11.399999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0175,
+        0.009
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7497998533491972,
+          "y_m": -0.2251102394802397,
+          "yaw_deg": 166.6868904447362
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.356,
+        0.2403,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0859,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0065,
+        -0.0051
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3719,
+        -0.2626,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0353,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.165,
+          "elbow_minus_wrist_z_m": 0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 15.8,
+          "arm_deg": [
+            -34.099998474121094,
+            -4.199999809265137,
+            1.7000000476837158,
+            15.800000190734863,
+            -18.5,
+            16.799999237060547,
+            9.100000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.165,
+          "elbow_minus_wrist_z_m": 0.001,
+          "elbow_out_of_shoulder_m": 0.032,
+          "elbow_angle_deg": 15.8,
+          "arm_deg": [
+            -34.0,
+            4.300000190734863,
+            -1.7000000476837158,
+            15.800000190734863,
+            18.600000381469727,
+            16.799999237060547,
+            -9.199999809265137
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.012,
+        -0.0007
+      ],
+      "distractors": {
+        "distractor_can": {
+          "x_m": 0.7500477749128196,
+          "y_m": -0.34517528936943465,
+          "yaw_deg": 120.5957534250242
+        },
+        "distractor_red_cylinder": {
+          "x_m": 0.7868341887412917,
+          "y_m": 0.219328591619575,
+          "yaw_deg": -5.207350039348406
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.6811434968007789,
+          "y_m": 0.2363651399757307,
+          "yaw_deg": -63.97677909366056
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_can": 0.0,
+        "distractor_red_cylinder": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3559,
+        0.23,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0864,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.002,
+        -0.0017
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3108,
+        -0.2727,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0459,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.167,
+          "elbow_minus_wrist_z_m": -0.0,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 13.1,
+          "arm_deg": [
+            -31.899999618530273,
+            -4.099999904632568,
+            0.6000000238418579,
+            13.100000381469727,
+            -19.100000381469727,
+            17.700000762939453,
+            9.899999618530273
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.167,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 13.1,
+          "arm_deg": [
+            -31.899999618530273,
+            4.099999904632568,
+            -0.6000000238418579,
+            13.100000381469727,
+            19.200000762939453,
+            17.600000381469727,
+            -9.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0119,
+        -0.011
+      ],
+      "distractors": {
+        "distractor_can": {
+          "x_m": 0.6579431151329851,
+          "y_m": 0.279389474314,
+          "yaw_deg": -129.9845955167289
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.7851872943507687,
+          "y_m": 0.27159454427129415,
+          "yaw_deg": -27.32166524015537
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_can": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3632,
+        0.26,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0848,
+      "touch_error_m": {
+        "left": 0.0008,
+        "right": 0.0008
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0202,
+        -0.0149
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0501,
+      "ball_end": [
+        0.3089,
+        -0.2059,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0496,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.155,
+          "elbow_minus_wrist_z_m": 0.008,
+          "elbow_out_of_shoulder_m": 0.029,
+          "elbow_angle_deg": 24.8,
+          "arm_deg": [
+            -40.79999923706055,
+            -4.599999904632568,
+            5.5,
+            24.799999237060547,
+            -16.399999618530273,
+            13.699999809265137,
+            6.800000190734863
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.155,
+          "elbow_minus_wrist_z_m": 0.008,
+          "elbow_out_of_shoulder_m": 0.028,
+          "elbow_angle_deg": 24.9,
+          "arm_deg": [
+            -40.70000076293945,
+            4.5,
+            -5.400000095367432,
+            24.899999618530273,
+            16.5,
+            13.699999809265137,
+            -6.800000190734863
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0192,
+        0.019
+      ],
+      "distractors": {
+        "distractor_red_cylinder": {
+          "x_m": 0.7443339638667763,
+          "y_m": -0.01860528386437262,
+          "yaw_deg": 130.96304679495057
+        },
+        "distractor_yellow_block": {
+          "x_m": 0.7527925225498685,
+          "y_m": 0.14266618695481498,
+          "yaw_deg": 116.5612890213978
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_red_cylinder": 0.0,
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3599,
+        0.2443,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0856,
+      "touch_error_m": {
+        "left": 0.0012,
+        "right": 0.0012
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0109,
+        -0.0081
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3523,
+        -0.2505,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0126,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.162,
+          "elbow_minus_wrist_z_m": 0.003,
+          "elbow_out_of_shoulder_m": 0.032,
+          "elbow_angle_deg": 18.5,
+          "arm_deg": [
+            -36.099998474121094,
+            -4.199999809265137,
+            2.5999999046325684,
+            18.5,
+            -18.200000762939453,
+            15.800000190734863,
+            8.600000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.162,
+          "elbow_minus_wrist_z_m": 0.003,
+          "elbow_out_of_shoulder_m": 0.031,
+          "elbow_angle_deg": 18.6,
+          "arm_deg": [
+            -36.099998474121094,
+            4.400000095367432,
+            -2.799999952316284,
+            18.600000381469727,
+            18.0,
+            15.899999618530273,
+            -8.5
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0159,
+        0.0033
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7536247348133464,
+          "y_m": -0.10610608392879942,
+          "yaw_deg": -118.43228159255733
+        },
+        "distractor_yellow_block": {
+          "x_m": 0.7156021705081698,
+          "y_m": 0.049929417050543545,
+          "yaw_deg": -5.580380755349874
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.36,
+        0.2244,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0864,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0023,
+        -0.0021
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3532,
+        -0.2561,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0177,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.167,
+          "elbow_minus_wrist_z_m": -0.0,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 13.3,
+          "arm_deg": [
+            -32.099998474121094,
+            -4.099999904632568,
+            0.699999988079071,
+            13.300000190734863,
+            -19.100000381469727,
+            17.600000381469727,
+            9.800000190734863
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.167,
+          "elbow_minus_wrist_z_m": -0.0,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 13.3,
+          "arm_deg": [
+            -32.0,
+            4.099999904632568,
+            -0.6000000238418579,
+            13.300000190734863,
+            19.200000762939453,
+            17.600000381469727,
+            -9.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.016,
+        -0.0166
+      ],
+      "distractors": {
+        "distractor_purple_cylinder": {
+          "x_m": 0.7320461161621235,
+          "y_m": 0.22850556311961429,
+          "yaw_deg": 20.46077641943649
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3329,
+        0.2433,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0877,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0069,
+        0.0045
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0505,
+      "ball_end": [
+        0.3136,
+        -0.274,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0449,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.172,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.036,
+          "elbow_angle_deg": 8.0,
+          "arm_deg": [
+            -27.899999618530273,
+            -3.700000047683716,
+            -1.5,
+            8.0,
+            -20.299999237060547,
+            19.100000381469727,
+            11.300000190734863
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.172,
+          "elbow_minus_wrist_z_m": -0.004,
+          "elbow_out_of_shoulder_m": 0.035,
+          "elbow_angle_deg": 8.1,
+          "arm_deg": [
+            -27.899999618530273,
+            3.9000000953674316,
+            1.399999976158142,
+            8.100000381469727,
+            20.100000381469727,
+            19.100000381469727,
+            -11.199999809265137
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0111,
+        0.0023
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7199228643925835,
+          "y_m": -0.24707438920899868,
+          "yaw_deg": 32.385813353831054
+        },
+        "distractor_yellow_block": {
+          "x_m": 0.6941694226717123,
+          "y_m": -0.08426333832954129,
+          "yaw_deg": -11.957932856065149
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.357,
+        0.2482,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0856,
+      "touch_error_m": {
+        "left": 0.0012,
+        "right": 0.0012
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0107,
+        -0.008
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0501,
+      "ball_end": [
+        0.3435,
+        -0.2334,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0076,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.162,
+          "elbow_minus_wrist_z_m": 0.003,
+          "elbow_out_of_shoulder_m": 0.032,
+          "elbow_angle_deg": 18.5,
+          "arm_deg": [
+            -36.099998474121094,
+            -4.199999809265137,
+            2.5,
+            18.5,
+            -18.299999237060547,
+            15.899999618530273,
+            8.600000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.162,
+          "elbow_minus_wrist_z_m": 0.003,
+          "elbow_out_of_shoulder_m": 0.031,
+          "elbow_angle_deg": 18.5,
+          "arm_deg": [
+            -36.099998474121094,
+            4.400000095367432,
+            -2.799999952316284,
+            18.5,
+            18.0,
+            15.899999618530273,
+            -8.5
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.013,
+        0.0072
+      ],
+      "distractors": {
+        "distractor_purple_cylinder": {
+          "x_m": 0.6282865988979265,
+          "y_m": 0.32624954374543375,
+          "yaw_deg": 116.21056791405195
+        },
+        "distractor_yellow_block": {
+          "x_m": 0.7549646356480249,
+          "y_m": -0.3141077175743056,
+          "yaw_deg": -178.23621060411278
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_purple_cylinder": 0.0,
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3369,
+        0.2606,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0862,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0014
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0038,
+        -0.0032
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3146,
+        -0.2722,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0429,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.166,
+          "elbow_minus_wrist_z_m": 0.0,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 14.1,
+          "arm_deg": [
+            -32.70000076293945,
+            -4.099999904632568,
+            1.0,
+            14.100000381469727,
+            -18.899999618530273,
+            17.299999237060547,
+            9.600000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.166,
+          "elbow_minus_wrist_z_m": 0.0,
+          "elbow_out_of_shoulder_m": 0.032,
+          "elbow_angle_deg": 14.1,
+          "arm_deg": [
+            -32.70000076293945,
+            4.099999904632568,
+            -1.0,
+            14.100000381469727,
+            19.0,
+            17.299999237060547,
+            -9.699999809265137
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0071,
+        0.0196
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.698389130931345,
+          "y_m": 0.28025723278967657,
+          "yaw_deg": -162.62438579931768
+        },
+        "distractor_can": {
+          "x_m": 0.6821317646653519,
+          "y_m": 0.08471385035199704,
+          "yaw_deg": -111.02788939443904
+        },
+        "distractor_yellow_block": {
+          "x_m": 0.6906894022919756,
+          "y_m": -0.21931457849187644,
+          "yaw_deg": -152.9522298457979
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_can": 0.0,
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.346,
+        0.2287,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0875,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.005,
+        0.0032
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0504,
+      "ball_end": [
+        0.3095,
+        -0.2713,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0459,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.036,
+          "elbow_angle_deg": 9.1,
+          "arm_deg": [
+            -28.799999237060547,
+            -3.700000047683716,
+            -1.2000000476837158,
+            9.100000381469727,
+            -20.200000762939453,
+            18.799999237060547,
+            11.100000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 9.1,
+          "arm_deg": [
+            -28.799999237060547,
+            3.9000000953674316,
+            0.8999999761581421,
+            9.100000381469727,
+            19.899999618530273,
+            18.799999237060547,
+            -10.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.002,
+        -0.0123
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7281848315437478,
+          "y_m": -0.16907654874370454,
+          "yaw_deg": -175.64349035801064
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.7796808773140447,
+          "y_m": 0.31418176374286316,
+          "yaw_deg": 165.8393589348978
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3482,
+        0.2416,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0864,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0021,
+        -0.0019
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3127,
+        -0.2682,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0415,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.167,
+          "elbow_minus_wrist_z_m": -0.0,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 13.1,
+          "arm_deg": [
+            -31.899999618530273,
+            -4.099999904632568,
+            0.6000000238418579,
+            13.100000381469727,
+            -19.100000381469727,
+            17.700000762939453,
+            9.899999618530273
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.167,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 13.1,
+          "arm_deg": [
+            -31.899999618530273,
+            4.099999904632568,
+            -0.6000000238418579,
+            13.100000381469727,
+            19.200000762939453,
+            17.600000381469727,
+            -9.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0042,
+        0.0006
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7247715775986167,
+          "y_m": -0.04281339052447274,
+          "yaw_deg": 98.48024219134766
+        },
+        "distractor_red_cylinder": {
+          "x_m": 0.7897357166962242,
+          "y_m": 0.21530468890692886,
+          "yaw_deg": 119.02731885783325
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.6761701763338341,
+          "y_m": 0.2910606119896114,
+          "yaw_deg": -66.2382051263133
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_red_cylinder": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3443,
+        0.2448,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0866,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0011,
+        -0.0012
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0501,
+      "ball_end": [
+        0.3213,
+        -0.268,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0352,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.168,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 12.5,
+          "arm_deg": [
+            -31.399999618530273,
+            -4.0,
+            0.30000001192092896,
+            12.5,
+            -19.399999618530273,
+            17.799999237060547,
+            10.100000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.168,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 12.5,
+          "arm_deg": [
+            -31.399999618530273,
+            4.0,
+            -0.20000000298023224,
+            12.5,
+            19.399999618530273,
+            17.799999237060547,
+            -10.100000381469727
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0003,
+        0.0038
+      ],
+      "distractors": {
+        "distractor_red_cylinder": {
+          "x_m": 0.7170060259408151,
+          "y_m": -0.17889425139135554,
+          "yaw_deg": 62.40946724105319
+        },
+        "distractor_yellow_block": {
+          "x_m": 0.6138568587121985,
+          "y_m": -0.38245876598673983,
+          "yaw_deg": -114.17656357630777
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_red_cylinder": 0.0,
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3408,
+        0.2361,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0875,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0051,
+        0.0032
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0504,
+      "ball_end": [
+        0.3161,
+        -0.2404,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0279,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.036,
+          "elbow_angle_deg": 9.0,
+          "arm_deg": [
+            -28.700000762939453,
+            -3.700000047683716,
+            -1.2000000476837158,
+            9.0,
+            -20.100000381469727,
+            18.799999237060547,
+            11.100000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 9.0,
+          "arm_deg": [
+            -28.700000762939453,
+            3.9000000953674316,
+            1.0,
+            9.0,
+            19.899999618530273,
+            18.899999618530273,
+            -10.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0032,
+        -0.0049
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.72649210703339,
+          "y_m": -0.3370847431657095,
+          "yaw_deg": -113.46335478777664
+        },
+        "distractor_red_cylinder": {
+          "x_m": 0.7247134003977928,
+          "y_m": 0.0792980013011597,
+          "yaw_deg": 104.23607290501752
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.6844977132269293,
+          "y_m": -0.13286700425978204,
+          "yaw_deg": -91.55610262472875
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_red_cylinder": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.353,
+        0.24,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0863,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0044,
+        -0.0036
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3479,
+        -0.2731,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0324,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.166,
+          "elbow_minus_wrist_z_m": 0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 14.6,
+          "arm_deg": [
+            -33.099998474121094,
+            -4.0,
+            1.100000023841858,
+            14.600000381469727,
+            -19.0,
+            17.200000762939453,
+            9.600000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.166,
+          "elbow_minus_wrist_z_m": 0.0,
+          "elbow_out_of_shoulder_m": 0.032,
+          "elbow_angle_deg": 14.6,
+          "arm_deg": [
+            -33.099998474121094,
+            4.300000190734863,
+            -1.2999999523162842,
+            14.600000381469727,
+            18.700000762939453,
+            17.200000762939453,
+            -9.399999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.009,
+        -0.001
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7470714147893162,
+          "y_m": -0.05060373238578824,
+          "yaw_deg": 121.39068560527664
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.6419682302154252,
+          "y_m": 0.325563156177372,
+          "yaw_deg": 159.2497916311156
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3561,
+        0.2259,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0869,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0004,
+        -0.0006
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0502,
+      "ball_end": [
+        0.3104,
+        -0.2659,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0419,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.168,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 12.1,
+          "arm_deg": [
+            -31.200000762939453,
+            -4.0,
+            0.20000000298023224,
+            12.100000381469727,
+            -19.399999618530273,
+            17.899999618530273,
+            10.100000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.168,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 12.2,
+          "arm_deg": [
+            -31.100000381469727,
+            4.099999904632568,
+            -0.20000000298023224,
+            12.199999809265137,
+            19.399999618530273,
+            17.899999618530273,
+            -10.100000381469727
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0121,
+        -0.0151
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7490353380375806,
+          "y_m": 0.2253470015853135,
+          "yaw_deg": -135.46610821458827
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3579,
+        0.2313,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0862,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0014
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0038,
+        -0.0032
+      ],
+      "carried_ball_bottom_above_wall_m": 0.05,
+      "ball_end": [
+        0.3217,
+        -0.2722,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0384,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.166,
+          "elbow_minus_wrist_z_m": 0.0,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 14.2,
+          "arm_deg": [
+            -32.79999923706055,
+            -4.099999904632568,
+            1.0,
+            14.199999809265137,
+            -18.899999618530273,
+            17.299999237060547,
+            9.600000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.166,
+          "elbow_minus_wrist_z_m": 0.0,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 14.2,
+          "arm_deg": [
+            -32.79999923706055,
+            4.099999904632568,
+            -1.0,
+            14.199999809265137,
+            19.0,
+            17.299999237060547,
+            -9.600000381469727
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0139,
+        -0.0097
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.6841403782087389,
+          "y_m": -0.25797707440047224,
+          "yaw_deg": 89.13102308103083
+        },
+        "distractor_can": {
+          "x_m": 0.6524607653866057,
+          "y_m": 0.274043606280812,
+          "yaw_deg": -63.91412727725786
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.7477747900249736,
+          "y_m": 0.21697526585935303,
+          "yaw_deg": -109.12927868621044
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_can": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3358,
+        0.2448,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0875,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0043,
+        0.0026
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0504,
+      "ball_end": [
+        0.3299,
+        -0.229,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0185,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.036,
+          "elbow_angle_deg": 9.5,
+          "arm_deg": [
+            -29.100000381469727,
+            -3.5999999046325684,
+            -1.100000023841858,
+            9.5,
+            -20.200000762939453,
+            18.600000381469727,
+            11.0
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 9.5,
+          "arm_deg": [
+            -29.0,
+            3.9000000953674316,
+            0.8999999761581421,
+            9.5,
+            19.899999618530273,
+            18.700000762939453,
+            -10.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0082,
+        0.0038
+      ],
+      "distractors": {
+        "distractor_can": {
+          "x_m": 0.7944430930429964,
+          "y_m": 0.28459764849002467,
+          "yaw_deg": 43.527203431182485
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_can": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3318,
+        0.2485,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0875,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0051,
+        0.0032
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0505,
+      "ball_end": [
+        0.3105,
+        -0.2688,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0435,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.036,
+          "elbow_angle_deg": 9.0,
+          "arm_deg": [
+            -28.700000762939453,
+            -3.700000047683716,
+            -1.2000000476837158,
+            9.0,
+            -20.100000381469727,
+            18.799999237060547,
+            11.100000381469727
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 9.0,
+          "arm_deg": [
+            -28.700000762939453,
+            4.0,
+            1.0,
+            9.0,
+            19.899999618530273,
+            18.899999618530273,
+            -10.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0122,
+        0.0075
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7513972278065116,
+          "y_m": -0.3437446261485644,
+          "yaw_deg": -46.44229974154672
+        },
+        "distractor_purple_cylinder": {
+          "x_m": 0.724364606383328,
+          "y_m": -0.04873901974341564,
+          "yaw_deg": 137.90808053855918
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_purple_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.347,
+        0.238,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0868,
+      "touch_error_m": {
+        "left": 0.0012,
+        "right": 0.0013
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0003,
+        -0.0003
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0502,
+      "ball_end": [
+        0.3616,
+        -0.2682,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0324,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.169,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.035,
+          "elbow_angle_deg": 11.7,
+          "arm_deg": [
+            -30.799999237060547,
+            -3.9000000953674316,
+            -0.10000000149011612,
+            11.699999809265137,
+            -19.600000381469727,
+            18.0,
+            10.300000190734863
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.169,
+          "elbow_minus_wrist_z_m": -0.001,
+          "elbow_out_of_shoulder_m": 0.033,
+          "elbow_angle_deg": 11.7,
+          "arm_deg": [
+            -30.799999237060547,
+            4.099999904632568,
+            -0.20000000298023224,
+            11.699999809265137,
+            19.299999237060547,
+            18.100000381469727,
+            -10.199999809265137
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.003,
+        -0.003
+      ],
+      "distractors": {
+        "distractor_can": {
+          "x_m": 0.701045937294967,
+          "y_m": 0.1144952112946003,
+          "yaw_deg": -103.59861484242265
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_can": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3292,
+        0.226,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0888,
+      "touch_error_m": {
+        "left": 0.001,
+        "right": 0.001
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0173,
+        0.0119
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0509,
+      "ball_end": [
+        0.3132,
+        -0.2574,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0349,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.176,
+          "elbow_minus_wrist_z_m": -0.006,
+          "elbow_out_of_shoulder_m": 0.039,
+          "elbow_angle_deg": 2.8,
+          "arm_deg": [
+            -23.600000381469727,
+            -3.0,
+            -3.9000000953674316,
+            2.799999952316284,
+            -21.600000381469727,
+            20.299999237060547,
+            12.899999618530273
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.177,
+          "elbow_minus_wrist_z_m": -0.007,
+          "elbow_out_of_shoulder_m": 0.038,
+          "elbow_angle_deg": 2.8,
+          "arm_deg": [
+            -23.600000381469727,
+            3.0999999046325684,
+            3.799999952316284,
+            2.799999952316284,
+            21.5,
+            20.299999237060547,
+            -12.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0148,
+        -0.015
+      ],
+      "distractors": {
+        "distractor_yellow_block": {
+          "x_m": 0.7326232905657188,
+          "y_m": -0.2121321679739576,
+          "yaw_deg": -168.27395406674003
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_yellow_block": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3312,
+        0.2519,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0874,
+      "touch_error_m": {
+        "left": 0.0011,
+        "right": 0.0011
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring",
+            "thumb"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        -0.0038,
+        0.0023
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0504,
+      "ball_end": [
+        0.3323,
+        -0.2307,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0156,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.002,
+          "elbow_out_of_shoulder_m": 0.035,
+          "elbow_angle_deg": 9.7,
+          "arm_deg": [
+            -29.200000762939453,
+            -3.799999952316284,
+            -0.800000011920929,
+            9.699999809265137,
+            -19.899999618530273,
+            18.600000381469727,
+            10.800000190734863
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.171,
+          "elbow_minus_wrist_z_m": -0.003,
+          "elbow_out_of_shoulder_m": 0.035,
+          "elbow_angle_deg": 9.7,
+          "arm_deg": [
+            -29.200000762939453,
+            3.799999952316284,
+            0.8999999761581421,
+            9.699999809265137,
+            20.0,
+            18.600000381469727,
+            -10.899999618530273
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        -0.0128,
+        0.0109
+      ],
+      "distractors": {
+        "distractor_box": {
+          "x_m": 0.7124495047530217,
+          "y_m": 0.17937973900004014,
+          "yaw_deg": -1.575981918773457
+        },
+        "distractor_red_cylinder": {
+          "x_m": 0.7072057052053342,
+          "y_m": -0.38701971687665765,
+          "yaw_deg": 59.744666515755895
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_box": 0.0,
+        "distractor_red_cylinder": 0.0
+      }
+    },
+    {
+      "passed": true,
+      "checks": {
+        "no_forbidden_contacts": true,
+        "ball_lifted": true,
+        "ball_carried_to_basket": true,
+        "ball_in_basket": true,
+        "ball_on_basket_floor": true,
+        "ball_at_rest": true,
+        "hands_off_ball": true
+      },
+      "first_failed": null,
+      "ball_start": [
+        0.3547,
+        0.2341,
+        0.9123
+      ],
+      "ball_moved_before_touch_m": 0.0,
+      "lift_height_m": 0.0865,
+      "touch_error_m": {
+        "left": 0.0013,
+        "right": 0.0014
+      },
+      "ball_touched_by": {
+        "squeeze": {
+          "left": [
+            "index",
+            "middle",
+            "pinky",
+            "ring"
+          ],
+          "right": [
+            "index",
+            "pinky",
+            "ring",
+            "thumb"
+          ]
+        },
+        "lifted": {
+          "left": [
+            "pinky",
+            "thumb"
+          ],
+          "right": [
+            "pinky",
+            "thumb"
+          ]
+        }
+      },
+      "carried_ball_over_basket_m": [
+        0.0029,
+        -0.0025
+      ],
+      "carried_ball_bottom_above_wall_m": 0.0501,
+      "ball_end": [
+        0.3314,
+        -0.2731,
+        0.8496
+      ],
+      "ball_to_basket_centre_m": 0.0345,
+      "ball_bottom_above_floor_m": -0.0004,
+      "forbidden_contacts": {},
+      "contacts": [
+        [
+          "lh_left_base_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_middle_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "lh_left_thumb_proximal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_base_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_index_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_pinky_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_ring_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_distal_link",
+          "volleyball"
+        ],
+        [
+          "rh_right_thumb_proximal_link",
+          "volleyball"
+        ]
+      ],
+      "posture_at_squeeze": {
+        "left": {
+          "elbow_minus_shoulder_z_m": -0.167,
+          "elbow_minus_wrist_z_m": 0.0,
+          "elbow_out_of_shoulder_m": 0.034,
+          "elbow_angle_deg": 13.7,
+          "arm_deg": [
+            -32.29999923706055,
+            -4.0,
+            0.699999988079071,
+            13.699999809265137,
+            -19.200000762939453,
+            17.399999618530273,
+            9.800000190734863
+          ]
+        },
+        "right": {
+          "elbow_minus_shoulder_z_m": -0.167,
+          "elbow_minus_wrist_z_m": -0.0,
+          "elbow_out_of_shoulder_m": 0.032,
+          "elbow_angle_deg": 13.7,
+          "arm_deg": [
+            -32.29999923706055,
+            4.199999809265137,
+            -0.8999999761581421,
+            13.699999809265137,
+            18.899999618530273,
+            17.5,
+            -9.699999809265137
+          ]
+        }
+      },
+      "sim_time_s": 28.2,
+      "ball_offset_m": [
+        0.0107,
+        -0.0069
+      ],
+      "distractors": {
+        "distractor_yellow_block": {
+          "x_m": 0.7258092796051034,
+          "y_m": 0.03842280968588248,
+          "yaw_deg": 74.19456991334125
+        }
+      },
+      "distractors_moved_m": {
+        "distractor_yellow_block": 0.0
+      }
+    }
+  ],
+  "passed": true
+}
