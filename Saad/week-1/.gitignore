@@ -1,0 +1,15 @@
+.venv
+__pycache__/
+*.pyc
+.DS_Store
+MUJOCO_LOG.TXT
+
+# outputs the scripts write (curated copies live in results/ and media/)
+runs/
+docs/*.png
+docs/videos/
+docs/render_check.npy
+
+# third-party downloads, not redistributed (see docs/SETUP.md)
+models/revo2/*/meshes/
+models/g1_brainco/assets/

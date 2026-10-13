@@ -1,0 +1,421 @@
+{
+ "passed": 13,
+ "total": 25,
+ "rows": [
+  {
+   "dx_m": -0.03,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0007,
+    "right": 0.0007
+   },
+   "lift_height_m": 0.0844,
+   "forbidden": [
+    "rh_right_pinky_tip->table"
+   ]
+  },
+  {
+   "dx_m": -0.03,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0007,
+    "right": 0.0008
+   },
+   "lift_height_m": 0.0841,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.03,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.03,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.03,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.015,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0008
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.015,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.015,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.015,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0009,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.0841,
+   "forbidden": []
+  },
+  {
+   "dx_m": -0.015,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.001,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.0843,
+   "forbidden": []
+  },
+  {
+   "dx_m": 0.0,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": 0.0,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.0008,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.084,
+   "forbidden": []
+  },
+  {
+   "dx_m": 0.0,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.001,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.0842,
+   "forbidden": []
+  },
+  {
+   "dx_m": 0.0,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.1021,
+   "touch_error_m": {
+    "left": 0.1819,
+    "right": 0.0112
+   },
+   "lift_height_m": -0.8076,
+   "forbidden": [
+    "lh_left_index_distal_link->table",
+    "lh_left_index_proximal_link->table",
+    "lh_left_middle_distal_link->table",
+    "lh_left_thumb_distal_link->table",
+    "rh_right_base_link->volleyball_stand",
+    "rh_right_pinky_proximal_link->volleyball_stand"
+   ]
+  },
+  {
+   "dx_m": 0.0,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.0616,
+   "touch_error_m": {
+    "left": 0.2194,
+    "right": 0.0427
+   },
+   "lift_height_m": -0.8074,
+   "forbidden": [
+    "rh_right_pinky_distal_link->volleyball_stand",
+    "rh_right_pinky_proximal_link->volleyball_stand"
+   ]
+  },
+  {
+   "dx_m": 0.015,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": true,
+   "first_failed": null,
+   "ball_moved_before_touch_m": 0.002,
+   "touch_error_m": {
+    "left": 0.001,
+    "right": 0.0009
+   },
+   "lift_height_m": 0.0841,
+   "forbidden": []
+  },
+  {
+   "dx_m": 0.015,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.1728,
+   "touch_error_m": {
+    "left": 0.0735,
+    "right": 0.1051
+   },
+   "lift_height_m": -0.0023,
+   "forbidden": [
+    "rh_right_base_link->volleyball_stand",
+    "rh_right_pinky_distal_link->volleyball_stand",
+    "rh_right_pinky_proximal_link->volleyball_stand"
+   ]
+  },
+  {
+   "dx_m": 0.015,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.1722,
+   "touch_error_m": {
+    "left": 0.1481,
+    "right": 0.1068
+   },
+   "lift_height_m": -0.8076,
+   "forbidden": [
+    "lh_left_base_link->table",
+    "lh_left_index_distal_link->table",
+    "lh_left_index_proximal_link->table",
+    "lh_left_middle_distal_link->volleyball_stand",
+    "lh_left_pinky_distal_link->table",
+    "lh_left_pinky_proximal_link->table"
+   ]
+  },
+  {
+   "dx_m": 0.015,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.1227,
+   "touch_error_m": {
+    "left": 0.0548,
+    "right": 0.0758
+   },
+   "lift_height_m": -0.8076,
+   "forbidden": [
+    "lh_left_index_distal_link->table",
+    "rh_right_base_link->volleyball_stand",
+    "rh_right_pinky_proximal_link->volleyball_stand"
+   ]
+  },
+  {
+   "dx_m": 0.015,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.1584,
+   "touch_error_m": {
+    "left": 0.1646,
+    "right": 0.0953
+   },
+   "lift_height_m": -0.8076,
+   "forbidden": [
+    "lh_left_index_distal_link->table",
+    "lh_left_index_proximal_link->table",
+    "lh_left_middle_distal_link->volleyball_stand",
+    "lh_left_pinky_distal_link->volleyball_stand",
+    "lh_left_ring_distal_link->volleyball_stand",
+    "lh_left_thumb_distal_link->table"
+   ]
+  },
+  {
+   "dx_m": 0.03,
+   "dy_m": -0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.1733,
+   "touch_error_m": {
+    "left": 0.1382,
+    "right": 0.1054
+   },
+   "lift_height_m": -0.074,
+   "forbidden": [
+    "rh_right_base_link->volleyball_stand",
+    "rh_right_pinky_distal_link->volleyball_stand",
+    "rh_right_pinky_proximal_link->volleyball_stand"
+   ]
+  },
+  {
+   "dx_m": 0.03,
+   "dy_m": -0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.1724,
+   "touch_error_m": {
+    "left": 0.1436,
+    "right": 0.1021
+   },
+   "lift_height_m": -0.8076,
+   "forbidden": [
+    "lh_left_base_link->table",
+    "lh_left_index_distal_link->table",
+    "lh_left_index_proximal_link->table",
+    "lh_left_middle_distal_link->table",
+    "lh_left_middle_distal_link->volleyball_stand",
+    "lh_left_pinky_proximal_link->table"
+   ]
+  },
+  {
+   "dx_m": 0.03,
+   "dy_m": 0.0,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.153,
+   "touch_error_m": {
+    "left": 0.1187,
+    "right": 0.0896
+   },
+   "lift_height_m": -0.8075,
+   "forbidden": [
+    "lh_left_index_distal_link->table",
+    "lh_left_thumb_distal_link->table",
+    "rh_right_base_link->volleyball_stand",
+    "rh_right_pinky_distal_link->volleyball_stand",
+    "rh_right_pinky_proximal_link->volleyball_stand"
+   ]
+  },
+  {
+   "dx_m": 0.03,
+   "dy_m": 0.015,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.1717,
+   "touch_error_m": {
+    "left": 0.1758,
+    "right": 0.0999
+   },
+   "lift_height_m": -0.8076,
+   "forbidden": [
+    "lh_left_base_link->table",
+    "lh_left_index_distal_link->table",
+    "lh_left_index_distal_link->volleyball_stand",
+    "lh_left_index_proximal_link->table",
+    "lh_left_middle_distal_link->volleyball_stand",
+    "lh_left_pinky_distal_link->table"
+   ]
+  },
+  {
+   "dx_m": 0.03,
+   "dy_m": 0.03,
+   "dyaw_deg": 0.0,
+   "passed": false,
+   "first_failed": "no_forbidden_contacts",
+   "ball_moved_before_touch_m": 0.165,
+   "touch_error_m": {
+    "left": 0.2393,
+    "right": 0.1231
+   },
+   "lift_height_m": -0.8076,
+   "forbidden": [
+    "lh_left_base_link->table",
+    "lh_left_index_distal_link->basket",
+    "lh_left_middle_distal_link->basket",
+    "lh_left_pinky_distal_link->table",
+    "lh_left_pinky_proximal_link->table",
+    "lh_left_ring_distal_link->basket"
+   ]
+  }
+ ]
+}

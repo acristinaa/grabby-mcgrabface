@@ -1,0 +1,62 @@
+{
+  "_info": [
+    "Stufe 1.5b - Zufallsvariation der Greifszene, gelesen von g1sim/randomization.py.",
+    "enabled schaltet eine Gruppe an oder aus. Einzelne Zahl = +- Halbbreite um den Normalwert, Liste = [min, max].",
+    "Laengen in m, Winkel in Grad, Farben RGB 0..1, Rauschen RGB in Graustufen 0..255.",
+    "distractors: only scenes with a distractor pool (volleyball) - count [min, max] of them on the table, keepout_m = gap to ball and basket.",
+    "scenes: per scene, narrower ranges laid over the groups above (any key of a group except enabled). volleyball: ball + stand offset",
+    "+-0.10 m - the two-hand teacher reaches 20/20 up to ~11 cm, beyond that the far-left starts fail (2026-10-08, 67 --vary objects)."
+  ],
+  "scenes": {
+    "volleyball": {
+      "objects": {"offset_m": 0.10}
+    }
+  },
+  "objects": {
+    "enabled": true,
+    "offset_m": 0.15,
+    "yaw_deg": 180,
+    "table_margin_m": 0.02,
+    "min_gap_m": 0.02
+  },
+  "stand": {
+    "enabled": true,
+    "forward_m": 0.10,
+    "sideways_m": 0.10,
+    "yaw_deg": 10
+  },
+  "physics": {
+    "enabled": true,
+    "mass_scale": [0.8, 1.2],
+    "friction_scale": [0.8, 1.2],
+    "gain_scale": [0.9, 1.1],
+    "latency_s": [0.0, 0.03]
+  },
+  "image": {
+    "enabled": true,
+    "light_scale": [0.6, 1.2],
+    "light_tilt_deg": 30,
+    "light_tint": 0.1,
+    "table_rgb": [0.2, 0.9],
+    "distractor_rgb": [0.1, 0.9],
+    "max_red_ratio": 1.5,
+    "bottle_rgb_jitter": 0.08,
+    "camera_offset_m": 0.005,
+    "camera_tilt_deg": 1.5,
+    "rgb_noise_std": 3.0,
+    "depth_noise_std_m": 0.002
+  },
+  "distractors": {
+    "enabled": true,
+    "count": [1, 3],
+    "yaw_deg": 180,
+    "table_margin_m": 0.02,
+    "min_gap_m": 0.03,
+    "keepout_m": 0.03
+  },
+  "start": {
+    "min_object_clearance_m": 0.02,
+    "min_table_clearance_m": 0.005,
+    "max_draws": 200
+  }
+}
