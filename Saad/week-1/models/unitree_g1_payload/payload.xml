@@ -1,0 +1,63 @@
+<!-- Anbauteile des echten G1: AGX-Rucksack und schwenkbares Kopfmodul mit RealSense D455.
+     Quelle: unitreerobotics/unitree_ros (BSD-3-Clause, siehe LICENSE), robots/g1_description:
+       - Kopfmodul: g1_comp.urdf, Commit 7c40519, Links head_servo_link, xl330_link, d455_link
+       - Rucksack:  README.md "How to Add AGX Backpack?", Commit d6f13aa, Link backpack_link
+     Meshes, Massen, Traegheiten, Posen, Gelenkachsen und -grenzen unveraendert (fullinertia = ixx iyy izz ixy ixz iyz).
+     Alle Posen gelten im torso_link der Unitree-URDFs. g1sim/payload.py setzt den Anbaurahmen dorthin.
+
+     Ergaenzt (nicht im URDF):
+       - Gelenke: armature/damping fuer die Servos (URDF: effort 0, velocity 0, keine Dynamik)
+       - equality: die Servos halten ihren Winkel; aendern mit g1sim/payload.set_head()
+       - head_camera: Farbkamera der D455 = Kopfkamera fuer die Policy (Masterplan 7.3). Lage aus Intels
+         realsense-ros (_d455.urdf.xacro, Apache-2.0): 4,55 mm hinter der Frontscheibe (x 0,0482 im Mesh), 59 mm
+         neben der Tiefen-Optik -> y -0,0115; Hoehe der Linsen im Mesh (+-2 mm).
+         RGB 90 x 65 Grad (Datenblatt, 1280x800) -> fovy 65.
+       - d435i_camera: Farbkamera der eingebauten D435i. Pose d435_joint aus g1_comp.urdf (Tiefen-Optik, 47,6 Grad nach
+         unten) + 15 mm zur Farboptik (_d435.urdf.xacro). RGB 69 x 42 Grad (Datenblatt, 1920x1080) -> fovy 42.
+       - Kontakt-Ausnahme Kamera <-> Kopfsockel (Kamera sitzt im Sockel-Umriss) -->
+<mujoco model="unitree-g1-payload">
+  <compiler angle="radian"/>
+  <asset>
+    <mesh name="backpack_link" file="meshes/backpack_link.STL"/>
+    <mesh name="head_servo_link" file="meshes/head_servo_link.STL"/>
+    <mesh name="xl330_link" file="meshes/xl330_link.STL"/>
+    <mesh name="d455_link" file="meshes/d455_link.STL"/>
+  </asset>
+  <worldbody>
+    <camera name="d435i_camera" pos="0.0576235 0.03253 0.42987" xyaxes="0 -1 0 0.73846 0 0.67430" fovy="42"/>
+    <body name="backpack_link" pos="-0.094605 -0.0005 0.165324">
+      <inertial pos="0 0 0" mass="1.9" fullinertia="0.015510 0.010909 0.007288 0.000017 0.000563 0.000059"/>
+      <geom type="mesh" mesh="backpack_link" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+      <geom name="backpack_collision" type="mesh" mesh="backpack_link" density="0" rgba="0.7 0.7 0.7 1"/>
+    </body>
+    <body name="head_servo_link" pos="0.0039635 0 -0.047">
+      <inertial pos="0.0012943 -0.00018754 0.49801" mass="0.54796"
+                fullinertia="0.00057097 0.0006971 0.00094194 -8.8657e-07 -1.925e-05 3.4522e-06"/>
+      <geom type="mesh" mesh="head_servo_link" contype="0" conaffinity="0" group="1" density="0" rgba="0.2 0.2 0.2 1"/>
+      <geom name="head_servo_collision" type="mesh" mesh="head_servo_link" density="0" rgba="0.2 0.2 0.2 1"/>
+      <!-- quat = URDF rpy (0 0.039968 0). Keine euler-Angabe: payload.set_start_pose dreht die Bodies ueber quat -->
+      <body name="xl330_link" pos="0.030518 0 0.52486" quat="0.99980033 0 0.01998267 0">
+        <inertial pos="0.01384 -0.000511 0.0098" mass="0.047"
+                  fullinertia="1.051e-05 2.5342e-05 2.3459e-05 -5.6e-06 7.016e-07 -6.04e-07"/>
+        <joint name="xl330_joint" axis="0 0 1" range="-0.8727 0.8727" armature="0.001" damping="0.05"/>
+        <geom type="mesh" mesh="xl330_link" contype="0" conaffinity="0" group="1" density="0" rgba="0.2 0.2 0.2 1"/>
+        <body name="d455_link" pos="0.0295 0 0.013">
+          <inertial pos="0.030219 -0.000416 -0.011779" mass="0.096"
+                    fullinertia="0.0001232 0.000106321 0.000194649 -3.1e-08 3.1246e-05 -5e-09"/>
+          <joint name="d455_joint" axis="0 1 0" range="-0.3491 1.5708" armature="0.001" damping="0.05"/>
+          <geom type="mesh" mesh="d455_link" contype="0" conaffinity="0" group="1" density="0" rgba="0.7 0.7 0.7 1"/>
+          <geom name="d455_collision" type="cylinder" size="0.015 0.05" pos="0.03 0 -0.01"
+                euler="1.5707963267948966 0 0" density="0" rgba="0.7 0.7 0.7 1"/>
+          <camera name="head_camera" pos="0.0436 -0.0115 -0.013" xyaxes="0 -1 0 0 0 1" fovy="65"/>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <equality>
+    <joint name="xl330_hold" joint1="xl330_joint" polycoef="0 0 0 0 0"/>
+    <joint name="d455_hold" joint1="d455_joint" polycoef="0 0 0 0 0"/>
+  </equality>
+  <contact>
+    <exclude body1="head_servo_link" body2="d455_link"/>
+  </contact>
+</mujoco>
