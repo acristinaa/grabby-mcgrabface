@@ -1,130 +1,90 @@
-# Finnegan – week 2 (status 8 Nov 2026)
+# Finnegan – week 2 (8 Nov 2026)
 
-Everything since the week-1 snapshot: Level 1 trained twice, the real-robot software, safe arm paths, and the hand-over for the
-Level 2 brain track. The full code is in [`code/`](code/) (a snapshot of my repo `finneganadam-maker/UnitreeG1-Robot`, commit
-`8bc5c9c`; the PC address is replaced by `<pc-tailscale-ip>`).
+## Week 2 in short
 
-**Short version:** in simulation the VLA (SmolVLA) picks up the volleyball with both hands and puts it in the basket on its own
-in **72 %** of new situations (run1). A second, bigger training (run2, 1,691 demos, 50 h) finished on the Hive PC on 6 Nov and
-**is not evaluated yet**. On the robot we have only run the read-only checks so far (19 Oct). For SAP on **13 Nov** the software
-to move the arms safely is built and tested in sim; a few safety decisions are still open (see below).
+**We trained our VLA (SmolVLA) on the PC at CODE, and now we have to test it.**
+
+- The robot's "brain" for grasping is SmolVLA, a small vision-language-action model (~450 M parameters). It looks through the head
+  camera, gets the sentence "put the ball in the basket", and moves the arms, hands and waist itself.
+- This week it was trained on the **PC at CODE** (GTX 1060) on **1,691 demonstrations** recorded in simulation. Training took
+  **50 hours** and finished on **Fri 6 Nov at 05:49**. The model files are on the PC.
+- **It is not tested yet.** Next step: let it grasp in the simulation 100–200 times on situations it has never seen and count the
+  successes. Our first, smaller model (run1, trained on 300 demos) managed **72 %**. The new one has to beat that.
+- In parallel I built the software that moves the real arms **safely** at SAP (13 Nov), and prepared the QR-code / Qwen track for Saad.
 
 ---
 
-## What to read (in this order)
+## What we built in week 2
 
-| # | File | Why |
+### 1. Training data, recorded on the PC at CODE
+- A programmed "teacher" does the task in simulation: walk up position, two-hand grasp of the volleyball, put it in the basket.
+  Its runs are the examples the VLA learns from.
+- To make the VLA robust, every demo is different: table height (70–75 cm), where the robot stands, where ball/stand/basket are,
+  light, table textures, ball weight and friction, motor strength, delay of the motors, camera position, and 5 different ways of
+  saying the task.
+- **1,691 demos** recorded on the PC (3 recorders in parallel), converted to the LeRobot format and checked: **0 problems**.
+
+### 2. The VLA trained on the PC at CODE (run2)
+| | run1 (October, MacBook) | **run2 (this week, PC at CODE)** |
 |---|---|---|
-| 1 | this README | status, open points, plan to 13 Nov |
-| 2 | [`code/PROGRESS.md`](code/PROGRESS.md), top block "NEXT STEP" + "Robot visit milestones" | the live status and the visit plan |
-| 3 | [`code/docs/ROBOT_DAY_RUNBOOK.md`](code/docs/ROBOT_DAY_RUNBOOK.md) | the step-by-step plan for the day at the robot (Parts A, B, C) |
-| 4 | [`code/.planning/real-robot/SAFE-PATHS.md`](code/.planning/real-robot/SAFE-PATHS.md) | how the arms get up and back without hitting the table |
-| 5 | [`code/docs/L2_BRAIN_TRACK.md`](code/docs/L2_BRAIN_TRACK.md) | Saad's track: QR codes + Qwen as the "brain" (Level 2/3) |
-| 6 | [`code/docs/LEARNING_PATH.md`](code/docs/LEARNING_PATH.md) §10 | plain-language explanations of every concept we used |
-| 7 | [`code/PLAN.md`](code/PLAN.md) | strategy and the binding safety rules for the real robot |
+| Demos | 300 | **1,691**, much more varied |
+| Training | 45,000 steps | **90,000 steps, 50 h** |
+| Result in the simulation | **72 %** on new situations | **not tested yet** |
 
-Code map: `code/g1sim/` = library (sim, teacher, safety layer, real-robot I/O) · `code/scripts/NN_*.py` = one script per step
-(67 teacher, 69 record, 79/80 convert + validate, 81 policy server, 82 eval, 84–89 real robot) · `code/tests/` = unit,
-integration, end-to-end tests (all pass in 3 Python environments).
+The finished model (865 MB) and 9 in-between versions (every 10,000 steps) are on the PC.
 
----
+### 3. Safe arm movement for the real robot (for SAP on 13 Nov)
+- At SAP the robot stands at a table. Its arms hang down, so a straight move to the start pose would sweep the hands through the table.
+- Built: fixed, checked routes ("waypoints"): arms up beside the body first, then forward to the start pose. Every route is checked
+  in a 3D model of robot + table to stay at least 5 cm away from table, stand and basket.
+- Then the VLA takes over and grasps on its own. Afterwards the arms go back along the same safe routes.
+- If something goes wrong (no data from the robot, an arm touches something, Ctrl+C), the arms stop or go home along the safe
+  routes; they never just drop into the table.
+- Everything is tested in a simulation of the robot's arm interface. Each step was checked by an independent review.
 
-## What I did since week 1
-
-| Area | Result |
-|---|---|
-| **Teacher (programmed demonstrator)** | Two-hand grasp hardened: finger clearance, natural arm motion, follows the real stand pose. Under full randomization 200/200, 300/300 |
-| **Randomization v2** | Table height −4…+1 cm, robot stance, ±8 cm object offsets, mass/friction ×0.8–1.2, motor gains ×0.9–1.1, latency 0–67 ms, light, 12 textures, table with legs, head camera ±2.5 cm/±5°, 5 different task sentences |
-| **run1** (SmolVLA, 300 demos, 45k steps, Mac) | **72 %** on 50 new starts (40k checkpoint), 70 % at 45k. Teacher on the same starts: 50/50. Reading: learned the demos, generalizes only partly → more varied data |
-| **v2 data + run2** (Hive PC) | 1,691 demos recorded on the PC (0 problems in validation), run2 = 90,000 steps, 50 h, finished 6 Nov 05:49, final loss 0.012 |
-| **Real-robot stack** | 84 read-only checklist, safety layer (joint limits, speed caps, staleness, ramps), 86 robot adapter with a motion lock, 85 arm simulator for rehearsals, 87 table-clearance check, 89 self-test for the laptops, runbook. Robot day 19 Oct: only the read-only part ran |
-| **Safe arm paths** (6 Nov, reviewed GO) | The arms move only along fixed routes that 87 has checked (≥ 5 cm from table, stand and basket): up beside the body first, then forward. Faults hold or go home along these routes. New `86 recover` brings the arms home after a crash and refuses if it is not sure where they are |
-| **Level 2 prep** | `scripts/90_head_frames.py` (full-resolution head frames + labels), 12 sample frames, the brief for Saad (`docs/L2_BRAIN_TRACK.md`, branch `l2-brain`) |
-
-Where the intelligence is: the **VLA grasp and place** looks at the ball through the head camera and decides every arm, hand and
-waist motion itself. The waypoints and the safety layer are the engineered, checked frame around it (like a crane that always lifts
-before it swings).
+### 4. Level 2 prepared for Saad
+QR codes on two boxes + a local Qwen model as the "brain" that decides which box ("put the red ball in box 2"). Plan, sample
+camera pictures and a start prompt: [`code/docs/L2_BRAIN_TRACK.md`](code/docs/L2_BRAIN_TRACK.md).
 
 ---
 
-## What is on the Hive PC (`ubucode`, GTX 1060 6 GB, 15 GB RAM)
+## What is open before SAP (13 Nov)
 
-| What | Where on the PC | Size |
-|---|---|---|
-| v2 dataset (LeRobot format, 1,691 demos) | `~/datasets/g1_volleyball_walkup_v2` | 137 GB |
-| run2 checkpoints 10k … 90k (`last` = 90k) | `~/dev/g1-ext/smolvla-runs/run2/checkpoints/<step>/pretrained_model` | 12 GB total, 865 MB per model |
-| Logs (recording, convert, validate, training) | `~/UnitreeG1-Robot/runs/l1v2_*.log` | small |
-| Code | `~/UnitreeG1-Robot` (commit `968f7c7`, older than this snapshot) | |
+1. **Test run2** on the PC (100–200 grasps in the simulation) and pick the best version. ← next
+2. Decide a few safety details for the arm movement (e.g. after a lost connection: hold the arms or bring them home?).
+3. Test the chosen model through the whole real-robot software in simulation before it touches the robot.
+4. Prepare the laptop that runs the model at SAP (the model runs on the laptop, the robot only sends camera + joint data).
 
-run1's checkpoints are on the Mac and the T7 (`DATA Collection/smolvla-runs/run1/`, sha256-verified .tar files).
+**Visit 1 (13 Nov):** robot at the table → safe routes lift the arms → the VLA grasps and places on its own → safe routes back.
+**Visit 2 (later):** the robot walks up to the table itself, then grasps and places.
 
-### How to get to it (Tailscale + SSH)
+Honest: grasping that works in simulation often works much less on a real robot at first. Visit 1 is about running the whole chain
+safely and learning what is different on the real robot.
 
-The PC and the Mac are in the same Tailscale network, so this works from anywhere, not only at CODE. Ask Finnegan to add your key.
+---
+
+## How to reach the PC at CODE
+
+The PC is in our Tailscale network, so it is reachable from anywhere (ask Finnegan to add your SSH key).
 
 ```bash
-ssh grabby@<pc-tailscale-ip>                                   # log in
-ssh grabby@<pc-tailscale-ip> 'tail -3 ~/UnitreeG1-Robot/runs/l1v2_pc_chain.log'   # quick status
-# copy the final model (865 MB) to the laptop
-rsync -avP grabby@<pc-tailscale-ip>:dev/g1-ext/smolvla-runs/run2/checkpoints/090000/pretrained_model/ \
-      ~/dev/g1-ext/smolvla-runs/run2/090000/pretrained_model/
-# copy eval reports back after an eval
-rsync -avP grabby@<pc-tailscale-ip>:UnitreeG1-Robot/runs/vla_eval_run2_*.json runs/
+ssh grabby@<pc-tailscale-ip>
 ```
 
-Do not copy the 137 GB dataset over Tailscale (it goes through a relay, slow). The dataset stays on the PC; only models and reports move.
+To copy the finished model to a laptop (run each line on its own, without anything after it):
 
-### How we process it
+```bash
+rsync -avP grabby@<pc-tailscale-ip>:dev/g1-ext/smolvla-runs/run2/checkpoints/090000/pretrained_model/ ./run2_090000/
+```
 
-1. **Eval on the PC** (the GPU is free now): the policy server `81` loads a checkpoint, `82` runs the sim trials against it.
-   ```bash
-   cd ~/UnitreeG1-Robot
-   ~/dev/g1-ext/smolvla-test/.venv/bin/python scripts/81_smolvla_server.py \
-       --checkpoint ~/dev/g1-ext/smolvla-runs/run2/checkpoints/090000 --device cuda &
-   ~/dev/g1-ext/.venv/bin/python scripts/82_vla_eval.py --no-walkup --seed 0 --trials 100 \
-       --train-variations 10 --demos <v2 demo folder> --name run2_090k_seed0
-   ```
-   Same 50 held-out starts as run1 first (fair comparison), then 100–200 for a tighter number. Run it for 2–3 checkpoints
-   (e.g. 60k, 80k, 90k) and keep the best.
-2. **Pick the checkpoint**, copy it to the policy laptop, pack it as one `.tar` with a sha256 sum and attach it to a GitHub release
-   (as done for run1), so the robot day uses exactly that file.
-3. **Sim2Sim**: run the chosen model through the real adapter (84 → 86 → 85 arm simulator) before it ever moves the real arms.
+The training data (137 GB) stays on the PC. Only the model and the test results get copied.
 
 ---
 
-## What is open for Level 1 at SAP (13 Nov)
+## What is in this folder
 
-Level 1 finish line (from `PROGRESS.md`): sim ≥ 85 % on new starts · walk mode ≥ 80 % · real robot ≥ 3/10.
-Today: 72 % · not measured · 0 attempts.
-
-| # | Must do before 13 Nov | Who | Status |
-|---|---|---|---|
-| 1 | **Eval run2** (above) and choose the checkpoint | Finnegan | not started, PC idle |
-| 2 | **Safety decisions** for the arm paths (what the arms do per fault type, waist limit, recover tolerance; list in `SAFE-PATHS.md`, rulings F1–F5, S1–S6) | Finnegan | open, defaults are built in |
-| 3 | Update runbook Part C + PLAN rules to the new paths (`86 recover` instead of `86 release` after a crash) | Finnegan + Claude | after #2 |
-| 4 | **Sim2Sim** of the chosen checkpoint through 84 → 86 → 85 + a final review | Finnegan + Claude | after #1 |
-| 5 | Self-test `89` on the operator laptop(s) | everyone who operates | open |
-| 6 | Policy laptop ready: SmolVLA env, the checkpoint, Ethernet to the robot | Finnegan | open |
-| 7 | On site: record the real factory arm pose (M0), run `87 --factory-pose` on it, table position in cm | at SAP | on the day |
-
-Not needed for visit 1: walking (visit 2), QR/Qwen brain (Saad's track, a bonus at most, read-only).
-
-### Visit plan (decided 4 Nov)
-- **Visit 1 (13 Nov, Potsdam):** robot placed at the table → checked waypoints raise the arms to the ready pose → the VLA grasps and
-  places on its own → checked paths bring the arms back. Read-only first, then motion only after the runbook gates pass.
-- **Visit 2 (date open):** full walk-up to the table, then grasp and place. Needs: walk + grasp in one sim world, walk-mode eval
-  ≥ 80 %, real walking (Unitree LocoClient), the lessons from visit 1.
-
----
-
-## Next steps (in order)
-
-1. Eval run2 on the PC (#1) → compare with 72 %.
-2. Finnegan's safety rulings (#2) → runbook/PLAN text (#3).
-3. Sim2Sim + final review (#4), release the checkpoint with sha256.
-4. Laptops: self-test 89, policy laptop setup (#5, #6).
-5. In parallel: Saad's Level 2 brain track (QR + Qwen) on branch `l2-brain`; Level 2 sim world (2 coloured balls + 2 boxes with QR codes).
-6. Housekeeping: PC hardening, the recorder memory leak in `69`.
-
-Honest expectation: manipulation sim-to-real is hard; a first real success rate is often low. Visit 1 is about running the whole
-chain safely and learning what the real robot does differently (torso lean, camera look, timing), not about a perfect score.
+- [`code/`](code/): my whole project code as of 6 Nov (copy of my repo `UnitreeG1-Robot`).
+- Read first: [`code/PROGRESS.md`](code/PROGRESS.md) (top part) · the robot-day plan [`code/docs/ROBOT_DAY_RUNBOOK.md`](code/docs/ROBOT_DAY_RUNBOOK.md) ·
+  the safe arm routes [`code/.planning/real-robot/SAFE-PATHS.md`](code/.planning/real-robot/SAFE-PATHS.md) ·
+  explanations of every concept [`code/docs/LEARNING_PATH.md`](code/docs/LEARNING_PATH.md) (section 10).
+- Older planning notes in `code/.planning/` and `code/docs/` show how we got here; some describe plans we later changed.
