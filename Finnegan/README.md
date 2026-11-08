@@ -2,15 +2,16 @@
 
 ## Current status (8 Nov 2026) – details in [`week-2/`](week-2/README.md)
 
-**Our VLA (SmolVLA) is trained. Next step: testing it.**
+**Our VLA (SmolVLA) is trained and tested (47 %, undertrained). It is training further now (run3, until ~Wed 11 Nov).**
 
 | When | What |
 |---|---|
 | 8–16 Oct | First VLA training (run1) on the MacBook with 300 demos: the robot grasps the ball on its own in **72 %** of new situations (simulation) |
 | 3 Nov | **1,691 new, much more varied demos** recorded on the PC at CODE (afternoon to 20:16), then converted and checked (0 problems) |
 | 4–6 Nov | **VLA training run2 on the PC at CODE: 90,000 steps, 50 h** (4 Nov 03:03 to 6 Nov 05:49) |
-| since 8 Nov | **Testing run2** on the PC: 100+ grasps in the simulation on situations it never saw, compared with run1's 72 % |
-| 13 Nov | SAP Potsdam: safe arm routes lift the arms, the VLA grasps and places on the real robot |
+| 8 Nov | **Test of run2:** 47/100 new situations (teacher 100/100). Cause: too short training for the bigger data set (0.59 passes) |
+| 8–11 Nov | **run3:** training continues on the PC (150k steps, ~77 h); in parallel the safety "virtual fence" against table contact |
+| 13 Nov | SAP Potsdam: safe arm routes lift the arms, the VLA tries to grasp and place; goal: safe and smooth, a miss is OK |
 
 The full code is in [`week-2/code/`](week-2/code/).
 

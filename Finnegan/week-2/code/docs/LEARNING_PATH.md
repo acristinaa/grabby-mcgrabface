@@ -1141,3 +1141,15 @@ After that comes Stage 5 (real robot). It is not part of this document.
 - "86 recover" brings the arms home after a crash, but only if the arms are still where the last log says. Otherwise it refuses and sends
   nothing: a robot that refuses is safe; a robot that guesses where its arms are can drive them into the table (the review found -9.9 cm).
 - Each fix was reviewed by an agent that did not write it and re-ran the checks itself; that is how the two recover bugs were found.
+
+### 10.75 Demos are the textbook, training is studying, eval is the exam (2026-11-08)
+- Recording demos only writes the textbook. The model learns during training, when it goes through the examples again and again. What
+  counts is how often it has seen each example (epochs), not the number of steps: steps x batch / frames = epochs.
+- run2: 90k steps x 8 = 720k samples on 1,227,666 frames = 0.59 epochs: it never saw half the book once. The steps were planned for 800
+  demos and not re-computed when the set grew to 1,691. A low loss (0.012) did not show it; the exam did: 47 % on new starts, and only
+  3/10 on starts it trained on ("undertrained": more training helps, more demos would not).
+- The eval report per trial: success (ball in basket, held 3 s), how far it got, why it failed (forbidden contact = safety, not lifted,
+  not placed in time), times. Totals with a 95 % range (100 trials = about +-9 %), training starts vs new starts, teacher as upper bound.
+- Safety is a separate layer, not part of the model: the VLA only imitates and does not "know" the table, so every command passes limits,
+  the demo corridor, speed caps, contact detection and (new) a virtual fence before it reaches a motor. Training and safety can be built in
+  parallel; they meet in the Sim2Sim rehearsal.

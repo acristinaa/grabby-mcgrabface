@@ -24,11 +24,19 @@ export HF_HUB_CACHE="${HF_HUB_CACHE:-$EXT/smolvla-test/hf_cache/hub}"   # smolvl
 export HF_HUB_OFFLINE=1                                  # local dataset, cached model: never ask the Hub
 mkdir -p "$OUT"
 
-mode="${1:?usage: train_smolvla.sh smoke | run1 | resume <name>}"
+mode="${1:?usage: train_smolvla.sh smoke | run1 | run2 | run3 | resume <name>}"
 case "$mode" in
   smoke) name=smoke; steps=200; save=200; log=10; decay=200 ;;
   run1) name=run1; steps=45000; save=5000; log=50; decay=45000 ;;
   run2) name=run2; steps=90000; save=10000; log=50; decay=90000
+        DATASET="${V2_ROOT:-/Volumes/G1DATA/datasets/g1_volleyball_walkup_v2}"; REPO_ID=local/g1_volleyball_walkup_v2
+        export HF_DATASETS_CACHE="${HF_DATASETS_CACHE:-/Volumes/G1DATA/hf-cache}" ;;
+  run3) name=run3; steps=150000; save=10000; log=50; decay=150000
+        # run2 continued (2026-11-08): run2's 90k steps were sized for 800 demos (~1.2 epochs), but v2 grew to 1,691 demos
+        # (~1.22M frames), so run2 saw only 0.59 epochs and its eval said "undertrained" (47/100, training starts 3/10).
+        # run3 starts from run2's 90k weights with a fresh schedule (warm-up 1k, decay over 150k): +0.98 epochs -> ~1.57 in total,
+        # near run1's 1.65. GTX 1060: ~1.84 s/step -> ~77 h. Needs RUN2_CKPT=<run2>/checkpoints/090000/pretrained_model.
+        BASE="${RUN2_CKPT:?run3 needs RUN2_CKPT}"
         DATASET="${V2_ROOT:-/Volumes/G1DATA/datasets/g1_volleyball_walkup_v2}"; REPO_ID=local/g1_volleyball_walkup_v2
         export HF_DATASETS_CACHE="${HF_DATASETS_CACHE:-/Volumes/G1DATA/hf-cache}" ;;
   resume)
@@ -38,7 +46,7 @@ case "$mode" in
 esac
 
 exec "$BIN/lerobot-train" \
-  --policy.path=lerobot/smolvla_base \
+  --policy.path="${BASE:-lerobot/smolvla_base}" \
   --policy.device="${DEVICE:-mps}" \
   --policy.push_to_hub=false \
   --policy.scheduler_decay_steps="$decay" \

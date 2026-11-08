@@ -43,7 +43,35 @@
   grasp in one sim world) with the walk-mode eval >= 80 %, real walking (Unitree LocoClient; `70_real_goto.py` never run on hardware) +
   handover at the table, Sim2Sim of the whole chain, and the visit-1 lessons (real torso lean, real camera look, first real attempts).
 
-**Where we continue: see "Update 2026-11-03" below (v2 + run2 run on the Hive PC). Older notes (as of 2026-10-07):**
+**Update 2026-11-08 — START HERE (newest). run2 evaluated: undertrained; run3 training on the Hive PC; safety fence in build.**
+- **run2 eval (Hive PC, `runs/eval_run2_pc.sh`, reports `runs/vla_eval_*.json` on the PC):** 90k on 100 held-out starts (seed 0, v2 ranges)
+  **47/100 = 47 % (Wilson 95 % 38-57 %)**, training starts **3/10**, verdict **"undertrained"**. Failures: 33 ball lifted but not placed in time,
+  16 forbidden contacts (table/stand/basket), 4 other. Teacher on the same 100 starts: **100/100**. Fair comparison on run1's conditions
+  (v1 ranges, same 50 starts): run2 **27/50 = 54 %** vs run1 40k **36/50 = 72 %**. 80k/60k not evaluated (skipped).
+- **Cause (planning error):** run2's 90k steps were sized for 800 demos (~1.2 epochs). v2 grew to 1,691 demos = 1,227,666 frames without
+  re-sizing, so run2 saw 720k samples = **0.59 epochs** (run1: 1.65). Loss 0.012 hid it. Rule from now on: size training in epochs
+  (target 1.5-2), re-compute whenever the dataset changes.
+- **Decision (Finnegan, 2026-11-08):** continue on the Hive PC: **run3** = `scripts/train_smolvla.sh run3` (`5cef14b`), from run2's 90k
+  weights, fresh schedule (warm-up 1k, cosine over 150k), 150k steps -> ~1.57 epochs in total, ~1.84 s/step -> **~77 h, started 2026-11-08
+  14:38, expected end Wed 2026-11-11 ~20:00**. Checkpoints every 10k. If the Tuesday mid-check shows no clear gain, or it gets tight: a rented
+  GPU. run1-under-v2-ranges eval (fallback C) later, not today (Finnegan).
+- **Gotcha:** the policy server on the PC needs `HF_HUB_OFFLINE=1 HF_HUB_CACHE=~/.cache/huggingface/hub` (as training), otherwise it tries
+  the Hub and dies. The `libavutil.so.60` traceback at training start is a harmless torchcodec probe (also 10x in run2's log).
+- **Visit-1 goal re-stated (Finnegan, 2026-11-08):** the real robot runs the learned grasp, never hurts itself or hits table/stand/basket,
+  no violent jerks (a bit jerky is fine), tries to pick up the ball; a miss is acceptable. 85 % sim stays the training target.
+- **Safety build started 2026-11-08 (workflow, plan -> review -> build -> review):** virtual fence = live FK distance check of every policy
+  command against table/stand/basket and the robot's own body, hold + soft exit on violation, `82 --fence` for sim; smoothness metrics +
+  limiter only if needed. Plan `.planning/real-robot/FENCE-SMOOTH.md`, reviews `.planning/reviews/fence-smooth.md`.
+- **Committed, not pushed:** `29e64a7` visit milestones, `8bc5c9c` safe arm paths (code review GO r3), `ae455d1` README, `5cef14b` run3.
+  Team repo `acristinaa/grabby-mcgrabface` branch `week-2`: Finnegan/week-2 (status + code snapshot), pushed by Finnegan by hand.
+- **Next steps:** Sun: run3 running; fence/smooth build; replay test of the PC data (offered). Mon: fence review + sim test against
+  run2's contact cases. Tue: run3 mid-check (copy a 10k-step checkpoint, eval) -> stay on PC or rent GPU; smoothness in the 85 rehearsal;
+  runbook Part C text. Wed ~20:00: run3 done -> final eval (100+ starts), pick checkpoint, sha256 release. Thu: Sim2Sim of the chosen
+  model through 84 -> 86 -> 85 with fence; laptop self-test 89. Fri 13 Nov: SAP. Open rulings for Finnegan: F1-F5, S1-S6, r3-m1, r3-m3
+  (`.planning/real-robot/SAFE-PATHS.md`) + fence margins. Qwen: after visit 1 basics; needs 86 to take the task sentence from a whitelist
+  of the 5 trained phrasings (today `policy_wire.TASK` is fixed, `g1sim/real_run_policy.py:133`).
+
+**Where we continue: see "Update 2026-11-08" above. Older notes (as of 2026-10-07):**
 Repo: `~/Documents/Projekt Tim and Lukas/Cursor/Software Engineering/SAP Robot Project/First Ideas/UnitreeG1-Robot` (rule 7 in `CLAUDE.md`).
 Start prompt for the next chat: `docs/START_PROMPT.md`. The user commits and pushes himself (rule 6). Keep the learning path
 `docs/LEARNING_PATH.md` up to date in every session without being asked (rule 8). New text in the repo is plain English (since 2026-10-05).

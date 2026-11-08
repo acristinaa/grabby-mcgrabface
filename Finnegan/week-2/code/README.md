@@ -4,12 +4,14 @@ A Unitree G1 humanoid (29 DoF, BrainCo Revo2 hands) picks up a volleyball with b
 learned: a **SmolVLA** vision-language-action model sees the head camera, gets the task sentence and moves arms, hands and waist.
 Everything is built and tested in MuJoCo first, then run on the real robot.
 
-## Status (2026-11-08)
+## Status (2026-11-08, evening)
 | What | State |
 |---|---|
 | Sim teacher (programmed demonstrator) | two-hand grasp, fully randomized scene, 200/200 |
 | run1: SmolVLA, 300 demos, MacBook | **72 %** on unseen starts |
-| run2: SmolVLA, 1,691 demos, PC at CODE (GTX 1060), 90k steps / 50 h | trained 2026-11-06, **evaluation next** |
+| run2: SmolVLA, 1,691 demos, PC at CODE (GTX 1060), 90k steps / 50 h | **47 %** on new starts, undertrained (only 0.59 epochs) |
+| run3: run2 continued for 150k steps (~1.57 epochs in total) on the PC at CODE | training since 2026-11-08, end ~2026-11-11 evening |
+| Virtual fence (live table/self-collision check) + smoothness | in build |
 | Real-robot software (84–89): read-only checks, safety layer, robot adapter, checked safe arm routes | built + reviewed; robot day 2026-10-19 ran the read-only part |
 | Next robot visit | SAP Potsdam 2026-11-13: safe routes lift the arms, the VLA grasps and places |
 

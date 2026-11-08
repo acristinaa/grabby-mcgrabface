@@ -1,16 +1,24 @@
 # Finnegan – week 2 (8 Nov 2026)
 
-## Week 2 in short
+## Week 2 in short (updated 8 Nov, evening)
 
-**We trained our VLA (SmolVLA) on the PC at CODE, and now we have to test it.**
+**We trained our VLA (SmolVLA) on the PC at CODE and tested it. It is not good enough yet, so it is training further right now.**
 
 - The robot's "brain" for grasping is SmolVLA, a small vision-language-action model (~450 M parameters). It looks through the head
-  camera, gets the sentence "put the ball in the basket", and moves the arms, hands and waist itself.
-- This week it was trained on the **PC at CODE** (GTX 1060) on **1,691 demonstrations** recorded in simulation. Training took
-  **50 hours** and finished on **Fri 6 Nov at 05:49**. The model files are on the PC.
-- **It is not tested yet.** Next step: let it grasp in the simulation 100–200 times on situations it has never seen and count the
-  successes. Our first, smaller model (run1, trained on 300 demos) managed **72 %**. The new one has to beat that.
-- In parallel I built the software that moves the real arms **safely** at SAP (13 Nov), and prepared the QR-code / Qwen track for Saad.
+  camera, gets the sentence "put the volleyball in the basket", and moves the arms, hands and waist itself.
+- **Trained (run2):** on the PC at CODE with **1,691 demonstrations**, 90,000 steps, **50 hours** (4–6 Nov).
+- **Tested (8 Nov):** in 100 new situations in the simulation it succeeded **47 times (47 %)**. The programmed teacher: 100/100.
+  On the old, easier test conditions run2 got 54 %, our first model run1 72 %.
+- **Why so low:** our planning mistake. The training length was planned for 800 demos; when we raised the demos to 1,691 we did not
+  make the training longer. So the model saw each example only ~0.6 times (run1: 1.65 times). The test says it clearly: it even fails
+  on situations it trained on (3/10) = **undertrained**, not "bad data".
+- **Now (run3):** the PC continues training from run2 for another 150,000 steps (~77 h), so the model sees every example ~1.6 times.
+  **Done ~Wed 11 Nov evening.** Mid-check on Tuesday; if it does not improve or it gets tight, we rent a bigger GPU.
+- **Safety (in build):** a "virtual fence" that checks every arm command before it is sent: no hand/finger closer than a few cm to the
+  table, stand, basket or the robot's own body, otherwise the command is not sent and the arms stop. Plus a check that the movements
+  are not too jerky. (In the test, 16 of 100 trials touched the table/stand/basket - the fence is for exactly that.)
+- **Goal for SAP (13 Nov):** the robot runs the learned grasp, does not hurt itself or hit the table, moves smoothly, and tries to pick
+  up the ball. A miss is OK. Training target stays 85 % in the simulation.
 
 ---
 
@@ -48,12 +56,19 @@ camera pictures and a start prompt: [`code/docs/L2_BRAIN_TRACK.md`](code/docs/L2
 
 ---
 
-## What is open before SAP (13 Nov)
+## Plan until SAP (13 Nov)
 
-1. **Test run2** on the PC (100–200 grasps in the simulation) and pick the best version. ← next
-2. Decide a few safety details for the arm movement (e.g. after a lost connection: hold the arms or bring them home?).
-3. Test the chosen model through the whole real-robot software in simulation before it touches the robot.
-4. Prepare the laptop that runs the model at SAP (the model runs on the laptop, the robot only sends camera + joint data).
+| Day | Training (PC at CODE, runs by itself) | Safety / robot software (Finnegan + Claude) |
+|---|---|---|
+| Sun 8 Nov | run3 started | virtual fence + smoothness: plan, review, build |
+| Mon 9 Nov | trains | fence: review + test in the simulation against the 16 contact cases |
+| Tue 10 Nov | trains; **mid-check** (test an in-between version) -> stay on the PC or rent a GPU | smoothness check in the robot rehearsal; robot-day checklist updated |
+| Wed 11 Nov | done ~20:00 -> **final test** (100+ situations), pick the best version | laptop for SAP ready (self-test 89) |
+| Thu 12 Nov | - | **rehearsal**: chosen model + fence + full robot software in the simulation |
+| Fri 13 Nov | - | **SAP Potsdam** |
+
+Open decisions for Finnegan: what the arms do per fault (hold or go home), the waist limit, fence distances.
+Later (after the basics work): Qwen says the sentence ("please put the ball in the basket") -> the VLA does it (see below).
 
 **Visit 1 (13 Nov):** robot at the table → safe routes lift the arms → the VLA grasps and places on its own → safe routes back.
 **Visit 2 (later):** the robot walks up to the table itself, then grasps and places.
@@ -62,6 +77,13 @@ Honest: grasping that works in simulation often works much less on a real robot 
 safely and learning what is different on the real robot.
 
 ---
+
+## Qwen later: "Hey robot, put the ball in the basket"
+
+Qwen does not move the robot. It turns what a person says into one of the sentences the VLA has learned (5 phrasings of "put the
+volleyball in the basket"), and the operator confirms before anything moves. Needed: a local Qwen model (Ollama), a small orchestrator
+(Saad's track, `code/docs/L2_BRAIN_TRACK.md`), and a small change so the robot program takes that sentence instead of a fixed one.
+Estimate: 1-2 days once the grasp works. Sorting into two boxes ("box 1 / box 2" via QR codes) needs new demos and training = Level 2.
 
 ## How to reach the PC at CODE
 
