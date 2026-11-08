@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G1 Steuerstand</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<header>
+  <h1>G1 Steuerstand</h1>
+  <div class="conn"><span id="dot" class="dot"></span><span id="connTxt">verbinde…</span></div>
+</header>
+
+<main>
+  <section class="viewport">
+    <div class="viewbar">
+      <label>Kamera
+        <select id="camera"></select>
+      </label>
+      <div class="spacer"></div>
+      <button id="pause" class="btn">Pause</button>
+      <button id="reset" class="btn">Reset</button>
+    </div>
+    <div class="stage">
+      <img id="view" alt="Simulationsansicht" draggable="false">
+      <div id="hint" class="hint">Ziehen zum Drehen · Rad zum Zoomen</div>
+    </div>
+    <div class="readout">
+      <span>t = <b id="t">0.00</b> s</span>
+      <span>Greifweite links <b id="sl">–</b> cm</span>
+      <span>Greifweite rechts <b id="sr">–</b> cm</span>
+      <span id="err" class="err"></span>
+    </div>
+  </section>
+
+  <aside class="panels">
+    <div class="panel">
+      <h2>Schnellaktionen</h2>
+      <div class="row">
+        <button class="btn wide" data-hands="0">Hände auf</button>
+        <button class="btn wide" data-hands="1">Hände zu</button>
+      </div>
+      <label class="slider">
+        <span>Greifen <b id="handVal">0.00</b></span>
+        <input type="range" id="hands" min="0" max="1" step="0.01" value="0">
+      </label>
+      <button class="btn wide" id="zero">Alle Stellwerte auf null</button>
+    </div>
+
+    <div class="panel" id="mountPanel">
+      <h2>Handmontage</h2>
+      <p class="note">Live einstellen, bis die Hand sitzt. Das Modell wird bei jeder
+      Änderung neu kompiliert (~180 ms).</p>
+      <div class="row seg" id="mountSide">
+        <button class="btn seg-btn active" data-side="left">links</button>
+        <button class="btn seg-btn" data-side="right">rechts</button>
+      </div>
+      <div id="mountSliders"></div>
+      <div class="row">
+        <button class="btn wide" id="mountReset">Zurücksetzen</button>
+        <button class="btn wide primary" id="mountApply">Werte übernehmen</button>
+      </div>
+      <pre id="mountOut" class="code" hidden></pre>
+    </div>
+
+    <div class="panel">
+      <h2>Aktuatoren</h2>
+      <div id="groups"></div>
+    </div>
+  </aside>
+</main>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

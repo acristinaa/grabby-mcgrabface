@@ -1,5 +1,7 @@
 # Finnegan's work – status 7 Oct 2026
 
+> **Newer: week 2 (8 Nov 2026) is in [`week-2/`](week-2/README.md)** – status, code snapshot, plan to SAP on 13 Nov.
+
 Simulation work on our Unitree G1 (MuJoCo, BrainCo Revo2 hands). The code lives in my repo `finneganadam-maker/UnitreeG1-Robot`;
 ask me for access. This folder is a snapshot so everyone can see where things stand.
 

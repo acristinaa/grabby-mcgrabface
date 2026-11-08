@@ -1,0 +1,91 @@
+{
+  "_info": [
+    "Stufe 1.5b - Zufallsvariation der Greifszene, gelesen von g1sim/randomization.py.",
+    "enabled schaltet eine Gruppe an oder aus. Einzelne Zahl = +- Halbbreite um den Normalwert, Liste = [min, max].",
+    "Laengen in m, Winkel in Grad, Farben RGB 0..1, Rauschen RGB in Graustufen 0..255.",
+    "distractors: only scenes with a distractor pool (volleyball) - count [min, max] of them on the table, keepout_m = gap to ball and basket.",
+    "scenes: per scene, narrower ranges laid over the groups above (any key of a group except enabled). volleyball: ball + stand offset",
+    "+-0.10 m - the two-hand teacher reaches 20/20 up to ~11 cm, beyond that the far-left starts fail (2026-10-08, 67 --vary objects).",
+    "walk: walk world (volleyball_walk, Level 1 Stage 3) - ball and basket shift +-m from their nominal spots, ball-basket separation",
+    "[min, max] m, layout rules, waist limit, arrival error added to the stop pose (back [min, max] m, side +-m, yaw +-deg), FK clearance",
+    "limits (m) for the stop pose and the stance. Arrival ranges come from the reach map (runs/l1w_s3_map.json).",
+    "v1 = the settings dataset level1_walkup_v1 and run1 used, frozen 2026-11-01 for a fair run1 vs run2 comparison",
+    "(82 --randomization configs/randomization_v1.json). textures off: the keys exist only because load() wants every key.",
+    "table_style block: the solid table run1 saw (added 2026-11-01; the physics is the same as with legs).",
+    "render_look basic: LeRobot's lamp, strong headlight, mirror floor - the look run1 saw (added 2026-11-01, visual only).",
+    "objects.table_height_m 0: run1 always had the table top at 0.74 m (added 2026-11-01)."
+  ],
+  "scenes": {
+    "volleyball": {
+      "objects": {"offset_m": 0.10}
+    }
+  },
+  "objects": {
+    "enabled": true,
+    "offset_m": 0.15,
+    "yaw_deg": 180,
+    "table_margin_m": 0.02,
+    "min_gap_m": 0.02,
+    "table_height_m": [0.0, 0.0]
+  },
+  "stand": {
+    "enabled": true,
+    "forward_m": 0.10,
+    "sideways_m": 0.10,
+    "yaw_deg": 10
+  },
+  "physics": {
+    "enabled": true,
+    "mass_scale": [0.8, 1.2],
+    "friction_scale": [0.8, 1.2],
+    "gain_scale": [0.9, 1.1],
+    "latency_s": [0.0, 0.03]
+  },
+  "image": {
+    "enabled": true,
+    "light_scale": [0.6, 1.2],
+    "light_tilt_deg": 30,
+    "light_tint": 0.1,
+    "table_rgb": [0.2, 0.9],
+    "distractor_rgb": [0.1, 0.9],
+    "max_red_ratio": 1.5,
+    "bottle_rgb_jitter": 0.08,
+    "camera_offset_m": 0.005,
+    "camera_tilt_deg": 1.5,
+    "rgb_noise_std": 3.0,
+    "depth_noise_std_m": 0.002,
+    "textures": false,
+    "texture_surfaces": ["table_top", "floor"],
+    "table_style": "block",
+    "render_look": "basic"
+  },
+  "distractors": {
+    "enabled": true,
+    "count": [1, 3],
+    "yaw_deg": 180,
+    "table_margin_m": 0.02,
+    "min_gap_m": 0.03,
+    "keepout_m": 0.03
+  },
+  "start": {
+    "min_object_clearance_m": 0.02,
+    "min_table_clearance_m": 0.005,
+    "max_draws": 200
+  },
+  "walk": {
+    "ball_offset_m": 0.08,
+    "basket_offset_m": 0.08,
+    "separation_m": [0.40, 0.56],
+    "stand_edge_gap_m": 0.08,
+    "basket_overhang_m": 0.005,
+    "side_margin_m": 0.02,
+    "object_gap_m": 0.03,
+    "max_waist_deg": 45,
+    "min_gap_deg": 50,
+    "arrival_back_m": [0.0, 0.06],
+    "arrival_side_m": 0.04,
+    "arrival_yaw_deg": 6,
+    "stop_clearance_m": 0.04,
+    "stance_clearance_m": 0.02
+  }
+}
