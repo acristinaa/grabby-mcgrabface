@@ -59,6 +59,17 @@
   the Hub and dies. The `libavutil.so.60` traceback at training start is a harmless torchcodec probe (also 10x in run2's log).
 - **Visit-1 goal re-stated (Finnegan, 2026-11-08):** the real robot runs the learned grasp, never hurts itself or hits table/stand/basket,
   no violent jerks (a bit jerky is fine), tries to pick up the ball; a miss is acceptable. 85 % sim stays the training target.
+- **Safety fence, plain words (for the team, 2026-11-08):** nothing is trained; a fixed rule checks every policy command with the 3D model
+  before it is sent (fingertips/palms/forearms vs. table, stand, basket, own body; the ball is excluded; people and unknown objects are NOT
+  covered - the fence uses no camera). Too close -> not sent, arm holds; keeps pushing ~0.5 s -> soft exit on the safe routes. Margins are
+  calibrated so the teacher's clean grasps never trigger it. Smoothness: measure jerk vs. the teacher first, limiter only if needed.
+  Team text: grabby-mcgrabface `Finnegan/week-2/README.md` section "Safety: the virtual fence".
+- **Mac budget (Finnegan, 2026-11-08):** the first fence workflow started an 81 server with a run1 checkpoint (~650 % CPU) + a teacher
+  measurement on the MacBook and overheated it; stopped and killed. Restarted 15:0x with a hard cap in every prompt: no VLA model on the
+  Mac, one sim process at a time, <= 50 teacher trials, clean up processes. Rule: before anything heavy runs on the Mac, say what, how many
+  cores and how long; big jobs go to the Hive PC.
+- **run3 start:** dataset loading takes ~33 min on the PC (run2: 03:04 -> 03:36 "Creating policy"; disk 76 % iowait), first step expected
+  ~15:15 on 2026-11-08.
 - **Safety build started 2026-11-08 (workflow, plan -> review -> build -> review):** virtual fence = live FK distance check of every policy
   command against table/stand/basket and the robot's own body, hold + soft exit on violation, `82 --fence` for sim; smoothness metrics +
   limiter only if needed. Plan `.planning/real-robot/FENCE-SMOOTH.md`, reviews `.planning/reviews/fence-smooth.md`.

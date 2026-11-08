@@ -56,6 +56,58 @@ camera pictures and a start prompt: [`code/docs/L2_BRAIN_TRACK.md`](code/docs/L2
 
 ---
 
+## Safety: the "virtual fence" and smooth movements (in build since 8 Nov)
+
+**Nothing is trained here.** The fence is not AI and does not learn. It is a fixed rule that checks every arm command before it reaches
+the motors. The VLA's learning stays exactly as it is.
+
+**Picture:** a learner driver and a driving instructor with an extra brake pedal. The VLA is the learner: it steers the arms and hands.
+The fence is the instructor: it does not steer, it only brakes when the learner is about to hit something.
+
+**How it works:**
+1. About 50 times per second the VLA says "move the arm joints to these angles".
+2. Before that is sent, the fence computes with a 3D model of the robot where every fingertip, palm and forearm would end up.
+3. It measures the distance to the obstacles. Far enough away: the command is sent. Too close: it is **not sent**, the arm stays where
+   it is. If the VLA keeps pushing towards the obstacle (about half a second), the run ends and the arms go home calmly along the
+   safe, pre-checked routes.
+
+**What it protects:**
+
+| Obstacle | Protected? | Note |
+|---|---|---|
+| Table (top and edge) | yes | table position measured with a tape measure at SAP and entered |
+| Ball stand, basket | yes | the hands must get close to the ball, so the distance is set so normal grasping still works |
+| The robot's own body (torso, hips, head, other arm) | yes | "the robot does not hit itself" |
+| The ball | no, on purpose | the robot has to touch the ball to grasp it |
+| People, a bag, anything not entered | **no** | the fence does not use the camera; it only knows what we enter. For that: operator, remote, emergency stop, distance |
+
+**How we make sure it does not block normal grasping:** the fence must never brake the teacher's clean movements (the ones the VLA
+learned from). We measure how close the teacher's hands get and set the fence just below that. In the test of 8 Nov, 16 of 100 trials
+touched the table/stand/basket; in the simulation test the fence has to stop exactly those.
+
+**Smooth, not jerky:** the VLA plans in pieces (50 movement steps, a new piece every half second). At the joins it can jerk. First we
+measure how jerky it is compared with the teacher; only if it is too jerky we add a smoothing step (limit how sharply a joint may speed
+up, blend the joins). A bit jerky is OK, violent jerks are not.
+
+**All safety layers together:**
+
+| Layer | Protects against | Status |
+|---|---|---|
+| Joint limits | joints bending too far | built |
+| Demo corridor | movements the teacher never made (e.g. punches, arm backwards) | built |
+| Speed limit | too fast (VLA at most half speed) | built |
+| **Virtual fence** | **hand/arm too close to table, stand, basket or its own body** | **in build** |
+| **Smoothness check** | **violent jerks** | **in build** |
+| Contact detection | arm already stuck on something: stop, go home slowly | built |
+| Safe routes | the way up before the grasp and back after it (checked in 3D, >= 5 cm) | built |
+| People | Ctrl+C, the owner's remote, emergency stop, harness | on site |
+
+In short: **the VLA decides what to do, the safety layers decide what is allowed.**
+
+**Where it runs:** the fence build (plan -> independent review -> build -> independent code review) runs on Finnegan's MacBook with a
+hard limit (no AI model on the Mac, at most one simulation at a time; ~3-4 h, mostly idle). The training runs on the PC at CODE.
+Details: [`code/.planning/real-robot/FENCE-SMOOTH.md`](code/.planning/real-robot/FENCE-SMOOTH.md) once written.
+
 ## Plan until SAP (13 Nov)
 
 | Day | Training (PC at CODE, runs by itself) | Safety / robot software (Finnegan + Claude) |
