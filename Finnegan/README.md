@@ -1,6 +1,24 @@
-# Finnegan's work – status 7 Oct 2026
+# Finnegan's work
 
-> **Newer: week 2 (8 Nov 2026) is in [`week-2/`](week-2/README.md)** – status, code snapshot, plan to SAP on 13 Nov.
+## Current status (8 Nov 2026) – details in [`week-2/`](week-2/README.md)
+
+**Our VLA (SmolVLA) is trained. Next step: testing it.**
+
+| When | What |
+|---|---|
+| 8–16 Oct | First VLA training (run1) on the MacBook with 300 demos: the robot grasps the ball on its own in **72 %** of new situations (simulation) |
+| 3 Nov | **1,691 new, much more varied demos** recorded on the PC at CODE (afternoon to 20:16), then converted and checked (0 problems) |
+| 4–6 Nov | **VLA training run2 on the PC at CODE: 90,000 steps, 50 h** (4 Nov 03:03 to 6 Nov 05:49) |
+| since 8 Nov | **Testing run2** on the PC: 100+ grasps in the simulation on situations it never saw, compared with run1's 72 % |
+| 13 Nov | SAP Potsdam: safe arm routes lift the arms, the VLA grasps and places on the real robot |
+
+The full code is in [`week-2/code/`](week-2/code/).
+
+---
+
+## Week 1 snapshot (7 Oct 2026, historical)
+
+> Everything below is the status of 7 Oct and is **outdated**: the VLA has been trained since (see above).
 
 Simulation work on our Unitree G1 (MuJoCo, BrainCo Revo2 hands). The code lives in my repo `finneganadam-maker/UnitreeG1-Robot`;
 ask me for access. This folder is a snapshot so everyone can see where things stand.
@@ -11,7 +29,7 @@ the first VLA (vision-language-action model) on them.
 
 ---
 
-## What was built today
+### What was built today
 
 | What | Result |
 |---|---|
@@ -28,7 +46,7 @@ Pictures and video are in [`media/`](media/):
 
 ---
 
-## How the whole system fits together
+### How the whole system fits together
 
 ```
 "Hey Unitree, take the ball from table A and put it in the box"
@@ -45,7 +63,7 @@ Pictures and video are in [`media/`](media/):
 
 ---
 
-## Which VLA?
+### Which VLA?
 
 | | **π₀.₅ (openpi)** | **SmolVLA** |
 |---|---|---|
@@ -57,7 +75,7 @@ Pictures and video are in [`media/`](media/):
 
 ---
 
-## Plan until Potsdam (18/19 Oct)
+### Plan until Potsdam (18/19 Oct)
 
 | Day | Work |
 |---|---|
@@ -70,7 +88,7 @@ Pictures and video are in [`media/`](media/):
 
 ---
 
-## Open questions (please help if you know)
+### Open questions (please help if you know)
 
 1. **AWS credits:** yes or no, and by when? We need to know by ~13 Oct.
 2. **Backpack PC:** which RTX card, how much GPU memory, which operating system (Linux?)
