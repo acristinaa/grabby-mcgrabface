@@ -1,0 +1,38 @@
+# Pinned packages for recording demos with scripts/69_volleyball_demo_factory.py on a second machine (e.g. the Ubuntu PC),
+# so its demos match the Mac's. Python 3.12 (Mac: 3.12.14).
+# Read 2026-11-01 from ~/dev/g1-ext/.venv: every installed distribution whose modules 69 imports (directly or through
+# g1sim, mink and huggingface_hub). The sim folder ~/dev/g1-ext/g1_brainco_sim (scripts/51_build_brainco_sim.py) is needed too.
+# OpenCV: 69 loads cv2 4.13.0 from opencv-python-headless; the Mac env also has opencv-python 5.0.0.93 installed, whose cv2
+# is shadowed - not pinned here, do not install both.
+#   python3.12 -m venv .venv && .venv/bin/pip install -r requirements-record.txt
+mujoco==3.13.0
+mink==1.3.0
+numpy==2.2.6
+opencv-python-headless==4.13.0.92
+daqp==0.9.1
+qpsolvers==4.13.0
+scipy==1.18.1
+huggingface_hub==1.31.0
+anyio==4.15.1
+certifi==2026.7.22
+charset-normalizer==3.5.1
+click==8.5.0
+filelock==3.32.6
+h11==0.16.0
+httpcore==1.0.9
+httpx==0.28.1
+idna==3.19
+Pygments==2.21.0
+PyYAML==6.0.3
+rich==15.0.0
+tqdm==4.70.1
+typing_extensions==4.16.0
+# Declared dependencies of mujoco and huggingface_hub that 69 does not import on the Mac but pip installs anyway (review m2);
+# PyOpenGL is imported by MuJoCo's EGL rendering on the Ubuntu PC (MUJOCO_GL=egl). Same source, same date.
+absl-py==2.5.0
+etils==1.14.0
+glfw==2.10.2
+PyOpenGL==3.1.10
+fsspec==2026.7.0
+hf-xet==1.6.0
+packaging==25.0

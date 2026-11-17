@@ -1,0 +1,14 @@
+.venv
+.venv.nosync/
+__pycache__/
+*.pyc
+docs/render_check.npy
+models/g1_brainco/assets/
+docs/*.png
+docs/videos/
+runs/
+runs_stand.log
+viewer.log
+models/revo2/*/meshes/
+MUJOCO_LOG.TXT
+.DS_Store

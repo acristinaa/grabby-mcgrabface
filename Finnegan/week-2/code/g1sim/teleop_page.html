@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>G1 Teleop</title>
+<!-- Seite zu scripts/57_teleop.py: zeigt /stream.mjpg und /status, schickt alle ~33 ms den Tastenstand an /input. -->
+<style>
+  :root { --bg: #14171c; --panel: #1d2128; --line: #2c323c; --text: #e6e9ee; --muted: #9aa3b0;
+          --accent: #4ea1ff; --rec: #ff4d4d; --ok: #3ecf8e; --warn: #ffb020; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 14px/1.45 -apple-system, system-ui, sans-serif; }
+  header { display: flex; align-items: center; gap: 12px; padding: 10px 16px; border-bottom: 1px solid var(--line); }
+  header h1 { font-size: 16px; margin: 0; font-weight: 600; }
+  #conn { margin-left: auto; color: var(--muted); font-size: 12px; }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 16px; padding: 16px; }
+  @media (max-width: 1100px) { main { grid-template-columns: 1fr; } }
+  #view { width: 100%; border-radius: 8px; background: #000; display: block; outline: 2px solid transparent; }
+  #view.focus { outline-color: var(--accent); }
+  #hint { color: var(--muted); font-size: 12px; margin-top: 6px; }
+  aside { display: flex; flex-direction: column; gap: 12px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; }
+  .card h2 { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); margin: 0 0 8px; }
+  #state { display: inline-block; padding: 2px 10px; border-radius: 999px; font-weight: 600; background: var(--line); }
+  #state.aufnahme { background: var(--rec); color: #fff; }
+  #state.voll { background: var(--warn); color: #000; }
+  .row { display: flex; justify-content: space-between; gap: 8px; margin: 4px 0; }
+  .muted { color: var(--muted); }
+  .bar { height: 8px; background: var(--line); border-radius: 4px; overflow: hidden; margin: 4px 0 8px; position: relative; }
+  .bar > div { height: 100%; background: var(--accent); width: 0; }
+  .bar .mark { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--ok); }
+  #warn { color: var(--rec); min-height: 1.2em; }
+  #message { min-height: 1.2em; }
+  .buttons { display: flex; flex-wrap: wrap; gap: 8px; }
+  button { background: var(--line); color: var(--text); border: 1px solid #3a414d; border-radius: 6px; padding: 6px 10px;
+           font: inherit; cursor: pointer; }
+  button:hover { border-color: var(--accent); }
+  button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+  button.active { border-color: var(--accent); color: var(--accent); }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  td { padding: 3px 0; vertical-align: top; }
+  td:first-child { white-space: nowrap; padding-right: 10px; }
+  kbd { background: var(--line); border: 1px solid #3a414d; border-bottom-width: 2px; border-radius: 4px; padding: 0 5px;
+        font: 12px ui-monospace, monospace; }
+  ol { margin: 0; padding-left: 18px; }
+</style>
+</head>
+<body>
+<header>
+  <h1>G1 Teleop · rote Flasche greifen</h1>
+  <span id="conn">verbinde …</span>
+</header>
+<main>
+  <section>
+    <img id="view" src="/stream.mjpg" alt="Simulation: Übersicht, Kopfkamera, Handkamera" tabindex="0">
+    <div id="hint">Tasten wirken nur, solange diese Seite im Vordergrund ist. Verlässt du sie, bleibt die Hand stehen.</div>
+  </section>
+  <aside>
+    <div class="card">
+      <h2>Episode</h2>
+      <div class="row"><span id="state">bereit</span><span id="seconds" class="muted">0,0 s</span></div>
+      <div class="row"><span>Gespeichert</span><span id="saved">0 (0 erfolgreich)</span></div>
+      <div class="row"><span>Greifen</span><span id="grip" class="muted">0 %</span></div>
+      <div class="bar"><div id="gripbar"></div></div>
+      <div class="row"><span>Flasche angehoben</span><span id="lift" class="muted">0,0 cm</span></div>
+      <div class="bar"><div id="liftbar"></div><span class="mark" style="left: 50%" title="5 cm = Erfolg"></span></div>
+      <div id="warn"></div>
+      <div id="message" class="muted"></div>
+      <div class="buttons" style="margin-top: 8px">
+        <button class="primary" data-event="save">Speichern <kbd>Enter</kbd></button>
+        <button data-event="discard">Verwerfen <kbd>⌫</kbd></button>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Ansicht</h2>
+      <div class="buttons">
+        <button data-view="schulter">Schulter <kbd>1</kbd></button>
+        <button data-view="seite">Seite <kbd>2</kbd></button>
+        <button data-view="oben">Oben <kbd>3</kbd></button>
+      </div>
+      <div class="row muted" style="margin-top: 8px"><span>Sim-Tempo</span><span id="realtime">–</span></div>
+      <div class="row muted"><span>Eingabe</span><span id="source">–</span></div>
+      <div class="row muted" id="phonerow" hidden><span>iPhone</span><span id="phone">–</span></div>
+    </div>
+    <div class="card">
+      <h2>Ablauf</h2>
+      <ol>
+        <li><kbd>G</kbd> Greifhaltung (Handfläche zur Flasche)</li>
+        <li>über die Flasche, absenken, heranfahren – nah dran mit <kbd>⇧</kbd> fein</li>
+        <li><kbd>Leertaste</kbd> greifen: erst Daumen, dann Finger (Balken abwarten)</li>
+        <li><kbd>E</kbd> anheben, bis der Balken über der grünen Marke ist</li>
+        <li><kbd>Enter</kbd> speichern → neue Szene</li>
+      </ol>
+      <p class="muted" style="margin: 8px 0 0">Die Aufnahme startet mit deiner ersten Eingabe. Richtungen aus Sicht des Roboters.</p>
+    </div>
+    <div class="card">
+      <h2>Tasten</h2>
+      <table>
+        <tr><td><kbd>W</kbd> <kbd>S</kbd></td><td>vor / zurück</td></tr>
+        <tr><td><kbd>A</kbd> <kbd>D</kbd></td><td>links / rechts</td></tr>
+        <tr><td><kbd>E</kbd> <kbd>Q</kbd></td><td>hoch / runter</td></tr>
+        <tr><td><kbd>J</kbd> <kbd>L</kbd> · <kbd>I</kbd> <kbd>K</kbd> · <kbd>U</kbd> <kbd>O</kbd></td><td>drehen: gieren · nicken · rollen</td></tr>
+        <tr><td><kbd>⇧</kbd> halten</td><td>fein (¼ Tempo)</td></tr>
+        <tr><td><kbd>Leertaste</kbd></td><td>greifen an / aus</td></tr>
+        <tr><td><kbd>G</kbd> · <kbd>H</kbd></td><td>Greifhaltung · zurück zur Startpose</td></tr>
+        <tr><td><kbd>Enter</kbd> · <kbd>⌫</kbd></td><td>speichern · verwerfen (neue Szene)</td></tr>
+        <tr><td>Gamepad</td><td>Sticks bewegen, rechter Trigger greift, A Greifhaltung, B Startpose, Start speichern</td></tr>
+      </table>
+    </div>
+  </aside>
+</main>
+<script>
+"use strict";
+const HOLD = new Set(["KeyW", "KeyS", "KeyA", "KeyD", "KeyE", "KeyQ", "KeyJ", "KeyL", "KeyI", "KeyK", "KeyU", "KeyO",
+                      "ShiftLeft", "ShiftRight"]);
+const KEY_EVENTS = { Space: "grip", KeyG: "grasp_pose", KeyH: "home", Enter: "save", Backspace: "discard" };
+const KEY_VIEWS = { Digit1: "schulter", Digit2: "seite", Digit3: "oben" };
+const PAD_EVENTS = { 0: "grasp_pose", 1: "home", 2: "grip", 8: "discard", 9: "save" };  // Standardbelegung A, B, X, Back, Start
+const held = new Set();
+let events = [], view = "schulter", padPressed = {}, lastOk = 0;
+
+document.addEventListener("keydown", (e) => {
+  if (HOLD.has(e.code)) { held.add(e.code); e.preventDefault(); }
+  else if (e.code in KEY_EVENTS) { if (!e.repeat) events.push(KEY_EVENTS[e.code]); e.preventDefault(); }
+  else if (e.code in KEY_VIEWS) { setView(KEY_VIEWS[e.code]); }
+});
+document.addEventListener("keyup", (e) => held.delete(e.code));
+window.addEventListener("blur", () => held.clear());  // Fenster verlassen = nichts gedrückt
+document.querySelectorAll("[data-event]").forEach((b) => b.addEventListener("click", () => events.push(b.dataset.event)));
+document.querySelectorAll("[data-view]").forEach((b) => b.addEventListener("click", () => setView(b.dataset.view)));
+const img = document.getElementById("view");
+img.addEventListener("focus", () => img.classList.add("focus"));
+img.addEventListener("blur", () => img.classList.remove("focus"));
+
+function setView(v) {
+  view = v;
+  document.querySelectorAll("[data-view]").forEach((b) => b.classList.toggle("active", b.dataset.view === v));
+}
+setView(view);
+
+function gamepad() {
+  const pad = (navigator.getGamepads ? [...navigator.getGamepads()] : []).find((p) => p && p.connected);
+  if (!pad) return { axes: [], trigger: 0 };
+  for (const [index, name] of Object.entries(PAD_EVENTS)) {
+    const pressed = !!(pad.buttons[index] && pad.buttons[index].pressed);
+    if (pressed && !padPressed[index]) events.push(name);
+    padPressed[index] = pressed;
+  }
+  return { axes: pad.axes.slice(0, 4), trigger: pad.buttons[7] ? pad.buttons[7].value : 0 };
+}
+
+async function send() {
+  const pad = gamepad();
+  const body = JSON.stringify({ held: [...held], events: events.splice(0), axes: pad.axes, trigger: pad.trigger, view });
+  try { await fetch("/input", { method: "POST", headers: { "Content-Type": "application/json" }, body }); } catch (e) {}
+}
+setInterval(send, 33);
+
+const $ = (id) => document.getElementById(id);
+const de = (x, digits = 1) => x.toFixed(digits).replace(".", ",");
+async function poll() {
+  try {
+    const s = await (await fetch("/status")).json();
+    lastOk = Date.now();
+    $("state").textContent = s.state;
+    $("state").className = s.state;
+    $("seconds").textContent = de(s.seconds) + " s";
+    $("saved").textContent = `${s.saved} (${s.successful} erfolgreich)`;
+    $("grip").textContent = Math.round(s.grip * 100) + " %";
+    $("gripbar").style.width = (s.grip * 100) + "%";
+    $("lift").textContent = de(Math.max(0, s.lift_cm)) + " cm";
+    $("liftbar").style.width = Math.min(100, Math.max(0, s.lift_cm) * 10) + "%";
+    $("warn").textContent = s.forbidden_contacts.length ? "Kontakt: " + s.forbidden_contacts.join(", ") + " – zählt nicht als Erfolg" : "";
+    $("message").textContent = s.message || "";
+    $("realtime").textContent = de(s.realtime, 2) + "× Echtzeit";
+    $("source").textContent = s.source || "–";
+    if (s.phone && s.phone.enabled) {
+      $("phonerow").hidden = false;
+      $("phone").textContent = (s.phone.connected ? "verbunden" : "wartet") + " · " + s.phone.address;
+    }
+  } catch (e) {}
+  $("conn").textContent = Date.now() - lastOk < 1500 ? "verbunden" : "keine Verbindung zur Sim";
+}
+setInterval(poll, 200);
+</script>
+</body>
+</html>
