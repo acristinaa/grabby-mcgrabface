@@ -1,0 +1,33 @@
+{
+  "stance": {
+    "x_m": -0.09944045043092231,
+    "y_m": -0.09428765643133302,
+    "yaw_deg": 6.33608565693928
+  },
+  "objects": {
+    "volleyball": {
+      "dx_m": -0.014241136673656207,
+      "dy_m": -0.0626415282843411,
+      "yaw_deg": 0.0
+    }
+  },
+  "basket": {
+    "dx_m": 0.013214864311396185,
+    "dy_m": -0.03942321210186741
+  },
+  "table": {
+    "dz_m": 0.0
+  },
+  "source": {
+    "episode": "episode_s101_t0000",
+    "seed": 101,
+    "config": "randomization_v1.json",
+    "reset": 1,
+    "head_image_mad": 3.76,
+    "built_by": "tests/helpers/make_replay_demo_layout.py"
+  },
+  "stand_vs_nominal_robot_frame_cm": {
+    "forward": 6.7,
+    "left": -1.7
+  }
+}
